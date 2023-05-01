@@ -1,0 +1,16 @@
+.bg-page-dark {
+    background-color: #171717;
+}
+.bg-box-dark {
+    background-color: #444444;
+}
+.color-dark, .color-dark-effect {
+    color: #EDEDED;
+    text-decoration: none;
+}
+.color-dark-effect:hover {
+    color: #DA0037;
+}
+.color-dark-effect:active {
+    color: #fc2359;
+}

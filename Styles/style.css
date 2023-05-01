@@ -1,0 +1,34 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Roboto+Slab&display=swap');
+@import "./components.css";
+@import "./pallets.css";
+@import "./properties.css";
+
+* {
+    font-family: 'Roboto Slab', serif;
+}
+
+.contur {
+    outline: 1px dashed red;
+}
+
+#logo {
+    width: 100px;
+    padding: 0;
+}
+
+/* TODO 3: Style-uri pentru componentele de la 1 (display: grid), 2 (display: flex si grid, dupa caz) */
+.search-btn {
+    background-color: rgba(0, 0, 0, 0);
+    border-style: none;
+}
+.bi-search {
+    font-size: x-large;
+}
+.bi-person-plus {
+    font-size: xx-large;
+}
+
+.bi-arrow-right-circle, .bi-arrow-left-circle {
+    font-size: 50px;
+}
