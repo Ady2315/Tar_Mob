@@ -3,9 +3,11 @@
 @import "./components.css";
 @import "./pallets.css";
 @import "./properties.css";
+@import "./mobile.css";
 
 * {
     font-family: 'Roboto Slab', serif;
+    /* border: 1px dashed red; */
 }
 
 .contur {
@@ -28,7 +30,18 @@
 .bi-person-plus {
     font-size: xx-large;
 }
-
+.bi-x-lg {
+    font-size: 3em;
+}
 .bi-arrow-right-circle, .bi-arrow-left-circle {
     font-size: 50px;
+}
+
+#products {
+    width: auto;
+    overflow: hidden;
+}
+#mobile {
+    display: none;
+    transition: 0.3s;
 }

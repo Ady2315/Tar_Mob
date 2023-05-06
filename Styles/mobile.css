@@ -1,0 +1,51 @@
+@media screen and (max-width: 700px) {
+    #desktop {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
+    }
+    .container {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    #left-button, #right-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 975px) {
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (max-width: 735px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 525px) {
+    .card-container {
+        
+    }
+    .card-price {
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width: 360px) {
+    .card-container {
+        
+    }
+    .card-price {
+        font-size: 1em;
+    }
+    .card-title {
+        font-size: 0.7em;
+    }
+    .btn-primary {
+        font-size: 0.8em;
+    }
+}

@@ -11,3 +11,9 @@
 .border-top {
     border-top: 2px solid #444444;
 }
+.w-full {
+    width: 100%;
+}
+.justify-center {
+    justify-content: center;
+}

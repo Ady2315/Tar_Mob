@@ -14,3 +14,9 @@
 .color-dark-effect:active {
     color: #fc2359;
 }
+.bg-color-effect:hover {
+    background-color: #DA0037;
+}
+.bg-color-effect:active {
+    background-color: #fc2359;
+}
