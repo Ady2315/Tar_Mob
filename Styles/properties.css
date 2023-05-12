@@ -37,3 +37,7 @@
 .flex-col {
     flex-direction: column;
 }
+.link-noeffects {
+    text-decoration: none;
+
+}

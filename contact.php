@@ -29,7 +29,7 @@
         </div>
     </address>
 
-    <form action="" method="POST">
+    <form action="" method="POST" id="formular-contact">
         <div class="form-row">
             <h3>Pentru intrebari sau curiozitati:</h3>
         </div>
