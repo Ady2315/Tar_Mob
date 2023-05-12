@@ -45,3 +45,10 @@
     display: none;
     transition: 0.3s;
 }
+#contact {
+    display: flex;
+    flex-direction: row;
+}
+.addr-row > * {
+    margin: 0;
+}

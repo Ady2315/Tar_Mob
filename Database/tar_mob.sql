@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
+DROP DATABASE IF EXISTS tar_mob;
+CREATE DATABASE tar_mob;
+USE tar_mob;
 
 DELIMITER $$
 --
