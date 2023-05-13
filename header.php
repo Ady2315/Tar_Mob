@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +33,15 @@
                 </ul>
             </nav>
             <ul class="nav-list">
-                <li class="nav-list-item"><a href="#"><i class="bi bi-person-plus color-dark-effect color-hover-dark"></i></a></li>
-            <li class="nav-list-item burger-menu"><button id="menu-btn" class="burger-menu-btn"><i class="bi bi-list"></i></button></li>
+                <?php if(isset($_SESSION)) {
+                    if($_SESSION['active'] == true) { ?>
+                        <li class="nav-list-item"><a href="login.php"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a></li>
+                    <?php }
+                    else { ?>
+                        <li class="nav-list-item"><a href="login.php"><i class="bi bi-person-plus color-dark-effect color-hover-dark"></i></a></li>
+                <?php }
+                } ?>
+                <li class="nav-list-item burger-menu"><button id="menu-btn" class="burger-menu-btn"><i class="bi bi-list"></i></button></li>
             </ul>
         </div>
     </header>

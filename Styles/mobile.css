@@ -23,12 +23,12 @@
 
 @media screen and (max-width: 975px) {
     .card-container {
-        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-columns: repeat(3, 1fr); */
     }
 }
 @media screen and (max-width: 735px) {
     .card-container {
-        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-columns: repeat(2, 1fr); */
     }
     .sidebar {
         float:none;

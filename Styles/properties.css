@@ -21,6 +21,9 @@
 .w-full {
     width: 100%;
 }
+.w-half {
+    width: 50%;
+}
 .justify-center {
     justify-content: center;
 }
@@ -40,4 +43,7 @@
 .link-noeffects {
     text-decoration: none;
 
+}
+.error {
+    color: rgb(255, 0, 0);
 }
