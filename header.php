@@ -21,6 +21,9 @@
                     <li class="nav-list-item"><a href="index.php" class="color-dark-effect color-hover-dark">Acasa</a></li>
                     <li class="nav-list-item"><a href="produse.php" class="color-dark-effect color-hover-dark">Produse</a></li>
                     <li class="nav-list-item"><a href="contact.php" class="color-dark-effect color-hover-dark">Contact</a></li>
+                    <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
+                        <li class="nav-list-item"><a href="contact.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
+                    <?php } ?>
                     <li class="nav-list-item"><button class="search-btn"><i class="bi bi-search color-dark-effect"></i></button></li>
                 </ul>
             </nav>
@@ -35,7 +38,12 @@
             <ul class="nav-list">
                 <?php if(isset($_SESSION)) {
                     if($_SESSION['active'] == true) { ?>
-                        <li class="nav-list-item"><a href="login.php"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a></li>
+                        <li class="nav-list-item dropdown"><a href="logout.php" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Cont</a>
+                            <a href="logout.php">Delogare</a>
+                        </div>
+                    </li>
                     <?php }
                     else { ?>
                         <li class="nav-list-item"><a href="login.php"><i class="bi bi-person-plus color-dark-effect color-hover-dark"></i></a></li>

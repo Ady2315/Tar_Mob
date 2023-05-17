@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 05:59 PM
+-- Generation Time: May 17, 2023 at 04:29 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
-DROP DATABASE IF EXISTS tar_mob;
-CREATE DATABASE tar_mob;
-USE tar_mob;
 
 DELIMITER $$
 --
@@ -161,7 +158,19 @@ CREATE TABLE `produse` (
 INSERT INTO `produse` (`id_produs`, `marca`, `model`, `diagonala`, `rezolutie`, `tip_display`, `os`, `versiune_os`, `procesor`, `nuclee`, `mem_interna`, `mem_ram`, `baterie`, `sloturi_sim`, `stoc`, `pret`, `imagine`) VALUES
 (1, 'SAMSUNG', 'GALAXY A14', 6.4, '2408x1080', 'LCD', 'ANDROID', 13, 'Snapdragon 5356k', 8, 64, 4, 5000, 2, 5, 767.28, 'smta146bk_5__c96135ef.avif'),
 (2, 'APPLE', 'IPHONE 11', 6.1, '1792 x 828', 'LIQUID RETINA HD', 'IOS', 14, 'A13 Bionic chip, Neural Engine Generatia a treia', 16, 64, 4, 3110, 1, 3, 2399, 'iPhone_11_Black_2-up_Vertical_US-EN_SCREEN_b5865797.webp'),
-(3, 'MOTOROLA', 'MOTO G13', 6.53, '1600x720', 'IPS', 'ANDROID', 13, 'MediaTek Helio G85', 8, 128, 4, 5000, 2, 10, 649.9, 'moto_g13_10__7a0accde.avif');
+(3, 'MOTOROLA', 'MOTO G13', 6.53, '1600x720', 'IPS', 'ANDROID', 13, 'MediaTek Helio G85', 8, 128, 4, 5000, 2, 10, 649.9, 'moto_g13_10__7a0accde.avif'),
+(4, 'SAMSUNG', 'GALAXY A04S', 6.5, '720x1600', 'LCD', 'ANDROID', 13, 'Snapdragon 865+', 8, 32, 3, 5000, 2, 99, 599.99, 'telefon-samsung-galaxy-a04s-black-01_fb445fab.jpg'),
+(5, 'APPLE', 'IPHONE 13', 6.1, '2532x1170', 'SUPER RETINA XDR', 'IOS', 13, 'A15 Bionic chip + 16-core Neural Engine', 6, 128, 4, 3240, 1, 99, 3.899, 'Telefon_APPLE_iPhone_13_5G_128GB_PRODUCT_RED_4_.jpg'),
+(6, 'MOTOROLA', 'MOTO E22S', 6.5, '1600x720', 'LCD', 'ANDROID', 12, 'MediaTek Helio G37', 8, 64, 4, 5000, 2, 99, 579.99, '156458-1200-auto.png'),
+(7, 'HUAWEI', 'NOVA 10', 6.67, '2400x1080', 'OLED', 'ANDROID', 12, 'Qualcomm Snapdragon 778G 4G', 8, 128, 8, 4000, 2, 99, 1.799, 'Telefon_HUAWEI_nova_10_128gb_product.png'),
+(8, 'HUAWEI', 'P60 PRO', 6.67, '2700x1220', 'OLED', 'ANDROID', 13.1, 'Snapdragon 8+ Gen 1 4G Mobile Platform', 8, 256, 8, 4815, 2, 99, 5.799, 'telefon_huawei_p60_pro_black_01_51119a78.webp'),
+(9, 'OPPO', 'RENO7 LITE ', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 11, 'Qualcomm Snapdragom 695', 8, 128, 8, 4500, 2, 99, 1.469, 'smtreno7zbk-1_bfaf7f8b.webp'),
+(10, 'OPPO', 'RENO8 T', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 13, 'MediaTek Helio G99', 8, 128, 8, 5000, 2, 99, 1.499, 'smtreno8tbked_ca9fc55d.webp'),
+(11, 'SONY', 'XPERIA 1 IV', 6.5, '3088x1440', 'OLED', 'ANDROID', 12, 'Platforma mobila Snapdragon 8 Gen 1', 8, 256, 12, 5000, 2, 99, 5.499, 'telefon_sony_xperia_1_iv_5g_09_a67535e5.webp'),
+(12, 'SONY', 'XPERIA 5 IV', 6.1, '2500x1080', 'OLED', 'ANDROID', 12, 'Snapdragon 8 Gen 1 Mobile Platform', 8, 128, 8, 5000, 2, 99, 4.499, 'telefon-sony-xperia-5-iv-5g-128gb-8gb-ram-dual-sim-green-1_729b4566.webp'),
+(13, 'XIAOMI', '12X', 6.28, '1080x2400', 'AMOLED DOTDISPLAY', 'ANDROID', 11, 'Snapdragon 870 7nm, Kryo 585 CPU pana la 3.2GHz', 8, 128, 8, 4500, 2, 99, 2.679, 'Telefon_XIAOMI_12X_5G_Blue_2_.webp'),
+(14, 'XIAOMI', '11T', 6.67, '1080x2400', 'AMOLED', 'ANDROID', 13, 'MediaTek Dimensity 1200 6nm', 8, 256, 8, 5000, 2, 99, 1.889, 'Telefon_XIAOMI_Mi_11T_5G_256GB_8GB_RAM_Dual_SIM_Moonlight_White_7_.webp'),
+(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp');
 
 --
 -- Triggers `produse`
@@ -183,6 +192,7 @@ DELIMITER ;
 CREATE TABLE `utilizator` (
   `id_utilizator` int UNSIGNED NOT NULL,
   `nume_utilizator` varchar(50) NOT NULL,
+  `nume` varchar(50) NOT NULL,
   `parola` varbinary(200) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -191,11 +201,11 @@ CREATE TABLE `utilizator` (
 -- Dumping data for table `utilizator`
 --
 
-INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `parola`, `email`) VALUES
-(1, 'admin', 0x2432792431302451794e732f314842594b734a6c484a4a69327970574f436d672f744635707065453633704a7374434a46687279737861382f4d5379, 'admin@root.com'),
-(2, 'adi_irimus22', 0x24327924313024416a495a3636413554517a4434336d31545157472e2e4d782f524d594f424c7267716e6667383859683475346b6961464859486f32, 'adi@irimus.ro'),
-(3, 'andrei_irimus7', 0x24327924313024573872325678314e34464a74576b364c6e336133364f6e6873574e734c784946564869686c35323272712e7038396d577463514665, 'andrei@irimus.ro'),
-(4, 'alex_popescu', 0x243279243130246f70696937723547684633576a48487059557375427559495739434a4d4b47764d5375694f4e6e3166584c635a725a4e7433633253, 'alex@popescu.ro');
+INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, `email`) VALUES
+(1, 'Admin', 'Admin', 0x243279243130244775756b6c385950736e35525253656a35526547354f61505a6b2e374363444d51486d772f667139584e54416f736d6261542f6d71, 'admin@root.com'),
+(2, 'adi_irimus22', 'Adi Irimus', 0x24327924313024764e5541656c6558714b6337676d4a724834706e612e5068333635744f58513231465879354e42454f4949626e445461364f79416d, 'adi@irimus.ro'),
+(3, 'andrei_irimus7', 'Andrei Irimus', 0x24327924313024573872325678314e34464a74576b364c6e336133364f6e6873574e734c784946564869686c35323272712e7038396d577463514665, 'andrei@irimus.ro'),
+(4, 'alex_popescu', 'Alex Popescu', 0x243279243130246f70696937723547684633576a48487059557375427559495739434a4d4b47764d5375694f4e6e3166584c635a725a4e7433633253, 'alex@popescu.ro');
 
 --
 -- Indexes for dumped tables
@@ -261,13 +271,13 @@ ALTER TABLE `facturi`
 -- AUTO_INCREMENT for table `produse`
 --
 ALTER TABLE `produse`
-  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `utilizator`
 --
 ALTER TABLE `utilizator`
-  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
