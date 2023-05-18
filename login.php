@@ -25,7 +25,8 @@
                 // var_dump($verify);
                 if($verify === true) {
                     $_SESSION['nume'] = $row['nume'];
-                    
+                    $_SESSION['user'] = $row['nume_utilizator'];
+
                     $_SESSION['active'] = true;
                     $conn->close();
                     echo "<meta http-equiv=\"refresh\" content=\"1; URL='index.php'\" >";

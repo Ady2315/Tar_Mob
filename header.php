@@ -1,4 +1,21 @@
-<?php session_start(); ?>
+<?php 
+    session_start();
+    
+    if (!isset($_SESSION['active'])) {
+        if ($_COOKIE['active']) {
+            $_SESSION['active'] = true;
+            $_SESSION['nume'] = $_COOKIE['nume'];
+        }
+        else {
+            $_SESSION['active'] = false;
+        }
+    }
+    else {
+        setcookie("active", $_SESSION['active'], time() + (86400 * 30), "/");
+        setcookie("nume", $_SESSION['nume'], time() + (86400 * 30), "/");
+        setcookie("user", $_SESSION['user'], time() + (86400 * 30), "/");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +39,7 @@
                     <li class="nav-list-item"><a href="produse.php" class="color-dark-effect color-hover-dark">Produse</a></li>
                     <li class="nav-list-item"><a href="contact.php" class="color-dark-effect color-hover-dark">Contact</a></li>
                     <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
-                        <li class="nav-list-item"><a href="contact.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
+                        <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
                     <li class="nav-list-item"><button class="search-btn"><i class="bi bi-search color-dark-effect"></i></button></li>
                 </ul>
@@ -39,15 +56,15 @@
                 <?php if(isset($_SESSION)) {
                     if($_SESSION['active'] == true) { ?>
                         <li class="nav-list-item dropdown"><a href="logout.php" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
-                        <div class="dropdown-content">
-                            <a href="#">Cont</a>
-                            <a href="logout.php">Delogare</a>
-                        </div>
-                    </li>
+                            <div class="dropdown-content">
+                                <a href="#">Cont</a>
+                                <a href="logout.php">Delogare</a>
+                            </div>
+                        </li>
                     <?php }
                     else { ?>
                         <li class="nav-list-item"><a href="login.php"><i class="bi bi-person-plus color-dark-effect color-hover-dark"></i></a></li>
-                <?php }
+                    <?php }
                 } ?>
                 <li class="nav-list-item burger-menu"><button id="menu-btn" class="burger-menu-btn"><i class="bi bi-list"></i></button></li>
             </ul>
