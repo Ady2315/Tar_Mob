@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 04:20 PM
+-- Generation Time: May 19, 2023 at 04:42 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
+DROP DATABASE IF EXISTS tar_mob;
+CREATE DATABASE tar_mob;
+USE tar_mob;
 
 DELIMITER $$
 --
@@ -113,17 +116,7 @@ CREATE TABLE `facturi` (
 
 INSERT INTO `facturi` (`id_fact`, `nr_fact`, `nr_comanda`, `id_produs`, `pret`, `cantitate`) VALUES
 (1, 10001, 1, 3, 700, 1),
-(2, 0, 2, 3, 0, 4),
-(3, 0, 3, 2, 6330721.100000001, 10),
-(4, 10002, 3, 1, 647354.136, 5),
-(6, 10003, 3, 1, 647354.136, 5),
-(7, 10005, 2, 1, 0, 5),
-(8, 10005, 2, 1, 1, 5),
-(9, 10005, 2, 1, 647354.136, 5),
-(10, 10005, 2, 1, 647354.136, 5),
-(11, 10006, 2, 1, 647354.136, 5),
-(12, 10007, 2, 1, 4220.04, 5),
-(13, 10007, 3, 2, 26389.000000000004, 10);
+(2, 0, 2, 3, 0, 4);
 
 -- --------------------------------------------------------
 
@@ -156,9 +149,7 @@ CREATE TABLE `produse` (
 --
 
 INSERT INTO `produse` (`id_produs`, `marca`, `model`, `diagonala`, `rezolutie`, `tip_display`, `os`, `versiune_os`, `procesor`, `nuclee`, `mem_interna`, `mem_ram`, `baterie`, `sloturi_sim`, `stoc`, `pret`, `imagine`) VALUES
-(1, 'SAMSUNG', 'GALAXY A14', 6.4, '2408x1080', 'LCD', 'ANDROID', 13, 'Snapdragon 5356k', 8, 64, 4, 5000, 2, 5, 767.28, 'smta146bk_5__c96135ef.avif'),
-(2, 'APPLE', 'IPHONE 11', 6.1, '1792 x 828', 'LIQUID RETINA HD', 'IOS', 14, 'A13 Bionic chip, Neural Engine Generatia a treia', 16, 64, 4, 3110, 1, 3, 2399, 'iPhone_11_Black_2-up_Vertical_US-EN_SCREEN_b5865797.webp'),
-(3, 'MOTOROLA', 'MOTO G13', 6.53, '1600x720', 'IPS', 'ANDROID', 13, 'MediaTek Helio G85', 8, 128, 4, 5000, 2, 10, 649.9, 'moto_g13_10__7a0accde.avif'),
+(3, 'MOTOROLA', 'MOTO G13', 6.53, '1600x720', 'IPS', 'ANDROID', 13, 'MediaTek Helio G85', 8, 128, 4, 5000, 2, 40, 649.9, 'moto_g13_10__7a0accde.avif'),
 (4, 'SAMSUNG', 'GALAXY A04S', 6.5, '720x1600', 'LCD', 'ANDROID', 13, 'Snapdragon 865+', 8, 32, 3, 5000, 2, 99, 599.99, 'telefon-samsung-galaxy-a04s-black-01_fb445fab.jpg'),
 (5, 'APPLE', 'IPHONE 13', 6.1, '2532x1170', 'SUPER RETINA XDR', 'IOS', 13, 'A15 Bionic chip + 16-core Neural Engine', 6, 128, 4, 3240, 1, 99, 3.899, 'Telefon_APPLE_iPhone_13_5G_128GB_PRODUCT_RED_4_.jpg'),
 (6, 'MOTOROLA', 'MOTO E22S', 6.5, '1600x720', 'LCD', 'ANDROID', 12, 'MediaTek Helio G37', 8, 64, 4, 5000, 2, 99, 579.99, '156458-1200-auto.png'),
@@ -170,7 +161,8 @@ INSERT INTO `produse` (`id_produs`, `marca`, `model`, `diagonala`, `rezolutie`, 
 (12, 'SONY', 'XPERIA 5 IV', 6.1, '2500x1080', 'OLED', 'ANDROID', 12, 'Snapdragon 8 Gen 1 Mobile Platform', 8, 128, 8, 5000, 2, 99, 4.499, 'telefon-sony-xperia-5-iv-5g-128gb-8gb-ram-dual-sim-green-1_729b4566.webp'),
 (13, 'XIAOMI', '12X', 6.28, '1080x2400', 'AMOLED DOTDISPLAY', 'ANDROID', 11, 'Snapdragon 870 7nm, Kryo 585 CPU pana la 3.2GHz', 8, 128, 8, 4500, 2, 99, 2.679, 'Telefon_XIAOMI_12X_5G_Blue_2_.webp'),
 (14, 'XIAOMI', '11T', 6.67, '1080x2400', 'AMOLED', 'ANDROID', 13, 'MediaTek Dimensity 1200 6nm', 8, 256, 8, 5000, 2, 99, 1.889, 'Telefon_XIAOMI_Mi_11T_5G_256GB_8GB_RAM_Dual_SIM_Moonlight_White_7_.webp'),
-(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp');
+(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp'),
+(16, 'NOKIA', '130', 1, '200x300', 'LED', 'CEVA', 1, 'racheta', 1, 1, 1, 3000, 1, 12, 120, 'GSMNO130DS17BK-1_521c3fc5.webp');
 
 --
 -- Triggers `produse`
@@ -271,7 +263,7 @@ ALTER TABLE `facturi`
 -- AUTO_INCREMENT for table `produse`
 --
 ALTER TABLE `produse`
-  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `utilizator`
@@ -299,7 +291,7 @@ ALTER TABLE `comenzi`
 -- Constraints for table `facturi`
 --
 ALTER TABLE `facturi`
-  ADD CONSTRAINT `fk_id_produs` FOREIGN KEY (`id_produs`) REFERENCES `produse` (`id_produs`),
+  ADD CONSTRAINT `fk_id_produs` FOREIGN KEY (`id_produs`) REFERENCES `produse` (`id_produs`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_nr_comanda` FOREIGN KEY (`nr_comanda`) REFERENCES `comenzi` (`nr_comanda`);
 COMMIT;
 
