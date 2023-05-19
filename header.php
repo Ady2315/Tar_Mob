@@ -2,18 +2,28 @@
     session_start();
     
     if (!isset($_SESSION['active'])) {
-        if ($_COOKIE['active']) {
-            $_SESSION['active'] = true;
-            $_SESSION['nume'] = $_COOKIE['nume'];
+        if (isset($_COOKIE)) {
+            if (isset($_COOKIE['active']) && isset($_COOKIE['nume'])) {
+                $_SESSION['active'] = $_COOKIE['active'];
+                $_SESSION['nume'] = $_COOKIE['nume'];
+                $_SESSION['id_user'] = $_COOKIE['id_user'];
+            }
+            else {
+                $_SESSION['active'] = false;
+                $_SESSION['nume'] = "";
+                $_SESSION['id_user'] = 0;
+            }
         }
         else {
-            $_SESSION['active'] = false;
+            setcookie("active", false, time() + (86400 * 30), "/");
+            setcookie("nume", "", time() + (86400 * 30), "/");
+            setcookie("id_user", 0, time() + (86400 * 30), "/");
         }
     }
     else {
         setcookie("active", $_SESSION['active'], time() + (86400 * 30), "/");
         setcookie("nume", $_SESSION['nume'], time() + (86400 * 30), "/");
-        setcookie("user", $_SESSION['user'], time() + (86400 * 30), "/");
+        setcookie("id_user", $_SESSION['id_user'], time() + (86400 * 30), "/");
     }
 ?>
 <!DOCTYPE html>
@@ -55,9 +65,9 @@
             <ul class="nav-list">
                 <?php if(isset($_SESSION)) {
                     if($_SESSION['active'] == true) { ?>
-                        <li class="nav-list-item dropdown"><a href="logout.php" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
+                        <li class="nav-list-item dropdown"><a href="cont.php?id=<?php echo $_SESSION['id_user']; ?>" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
                             <div class="dropdown-content">
-                                <a href="#">Cont</a>
+                                <a href="cont.php?id=<?php echo $_SESSION['id_user']; ?>">Cont</a>
                                 <a href="logout.php">Delogare</a>
                             </div>
                         </li>

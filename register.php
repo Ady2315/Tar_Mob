@@ -29,7 +29,7 @@
             $usernameErrR = "Introduceti un nume de utilizator";  
         } 
         else {  
-            $usernameR = format($_POST['nume']);  
+            $usernameR = format($_POST['username']);  
         }    
         if (empty($_POST['e-mail'])) {  
             $emailErrR = "Introduceti un email";  
@@ -124,6 +124,7 @@
         <div class="form-row">
             <a href="login.php">Ai deja un cont?</a>
             <input type="submit" value="Creaza contul">
+            <span class="success"><?php echo $successR; ?></span>
         </div>
     </form>
 </div>

@@ -17,7 +17,7 @@
         require('mysql.php');
         $usernameL = $_POST['username'];
         $parolaL = $_POST['parola'];
-        $query = "SELECT nume_utilizator, nume, parola, email FROM utilizator WHERE email='$usernameL' OR nume_utilizator='$usernameL';";
+        $query = "SELECT * FROM utilizator WHERE email='$usernameL' OR nume_utilizator='$usernameL';";
         $result = $conn->query($query);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_array()) {
@@ -25,7 +25,7 @@
                 // var_dump($verify);
                 if($verify === true) {
                     $_SESSION['nume'] = $row['nume'];
-                    $_SESSION['user'] = $row['nume_utilizator'];
+                    $_SESSION['id_user'] = $row['id_utilizator'];
 
                     $_SESSION['active'] = true;
                     $conn->close();

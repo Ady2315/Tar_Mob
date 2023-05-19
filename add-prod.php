@@ -72,7 +72,7 @@
                     </div>
                     <div class="form-row">
                         <label for="diagonala">Diagonala:</label>
-                        <input type="number" name="diagonala" id="diagonala">
+                        <input type="text" name="diagonala" id="diagonala">
                     </div>
                     <div class="form-row">
                         <label for="rezolutie">Rezolutie:</label>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="form-row">
                         <label for="versiune-os">Versiune:</label>
-                        <input type="number" name="versiune-os" id="versiune-os">
+                        <input type="text" name="versiune-os" id="versiune-os">
                     </div>
                     <div class="form-row">
                         <label for="procesor">Procesor:</label>
@@ -96,19 +96,19 @@
                     </div>
                     <div class="form-row">
                         <label for="nuclee">Numar nuclee:</label>
-                        <input type="number" name="nuclee" id="nuclee">
+                        <input type="text" name="nuclee" id="nuclee">
                     </div>
                     <div class="form-row">
                         <label for="mem-interna">Memorie interna:</label>
-                        <input type="number" name="mem-interna" id="mem-interna">
+                        <input type="text" name="mem-interna" id="mem-interna">
                     </div>
                     <div class="form-row">
                         <label for="mem-ram">Memorie RAM:</label>
-                        <input type="number" name="mem-ram" id="mem-ram">
+                        <input type="text" name="mem-ram" id="mem-ram">
                     </div>
                     <div class="form-row">
                         <label for="baterie">Baterie:</label>
-                        <input type="number" name="baterie" id="baterie">
+                        <input type="text" name="baterie" id="baterie">
                     </div>
                     <div class="form-row">
                         <label for="sloturi-sim">Sloturi SIM:</label>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="form-row">
                         <label for="pret">Pret:</label>
-                        <input type="number" name="pret" id="pret">
+                        <input type="text" name="pret" id="pret">
                     </div>
                     <div class="form-row">
                         <label for="">Imagine:</label>

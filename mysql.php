@@ -1,7 +1,7 @@
 <?php
     $host = "127.0.0.1";
     $user = "root";
-    $password = "Adi2315";
+    $password = "Phq2-31gif5";
     $database = "tar_mob";
 
     $conn = new mysqli($host, $user, $password, $database);

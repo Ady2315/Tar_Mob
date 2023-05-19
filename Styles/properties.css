@@ -47,3 +47,6 @@
 .error {
     color: rgb(255, 0, 0);
 }
+.success {
+    color: #02e747;
+}

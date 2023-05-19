@@ -2,7 +2,7 @@
 
 <article>
     <header>
-        <h1>Modificati datele produsului</h1>
+        <h1>Daca doriti sa modificati datele contului, la final apasati pe butonul de salvare</h1>
     </header>
 
 
@@ -76,78 +76,41 @@
             } else {
                 //dacă nu s-a efectuat trimiterea, înseamnă că trebuie să afișăm formularul
                 $query = "SELECT *
-                    FROM produse
-                    WHERE id_produs=".$id;
+                    FROM utilizator
+                    WHERE id_utilizator=".$id;
 
                 $result = $conn->query($query);
                 $row = $result->fetch_array();
-
                 ?>
-                <form id="editProdus" action="" method="POST">
+                <form id="editCont" action="" method="POST">
 
                     <div class="form-row">
-                        <label for="marca">Marca:</label>
-                        <input type="text" name="marca" id="marca" value="<?=$row["marca"]?>" >
+                        <label for="nume">Nume:</label>
+                        <input type="text" name="nume" id="nume" value="<?=$row["nume"]?>">
+                        <input type="checkbox" name="nume-nou" id="nume-nou">
                     </div>
                     <div class="form-row">
-                        <label for="model">Model:</label>
-                        <input type="text" name="model" id="model" value="<?=$row["model"]?>" >
+                        <label for="username">Nume utilizator:</label>
+                        <input type="text" name="username" id="username" value="<?=$row["nume_utilizator"]?>" >
+                        <input type="checkbox" name="user-nou" id="user-nou">
                     </div>
                     <div class="form-row">
-                        <label for="diagonala">Diagonala:</label>
-                        <input type="number" name="diagonala" id="diagonala" value="<?=$row["diagonala"]?>" >
+                        <label for="e-mail">Email:</label>
+                        <input type="email" name="e-mail" id="e-mail" value="<?=$row["email"]?>">
+                        <input type="checkbox" name="email-nou" id="email-nou">
                     </div>
                     <div class="form-row">
-                        <label for="rezolutie">Rezolutie:</label>
-                        <input type="text" name="rezolutie" id="rezolutie" value="<?=$row["rezolutie"]?>" >
+                        <label for="parola">Parola:</label>
+                        <input type="password" name="parola" id="parola" value="<?=$row["parola"]?>">
+                        <input type="checkbox" name="parola-noua" id="parola-noua">
                     </div>
                     <div class="form-row">
-                        <label for="tip-display">Tip display:</label>
-                        <input type="text" name="tip-display" id="tip-display" value="<?=$row["tip_display"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="os">Sistem de operare:</label>
-                        <input type="text" name="os" id="os" value="<?=$row["os"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="versiune-os">Versiune:</label>
-                        <input type="number" name="versiune-os" id="versiune-os" value="<?=$row["versiune_os"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="procesor">Procesor:</label>
-                        <input type="text" name="procesor" id="procesor" value="<?=$row["procesor"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="nuclee">Numar nuclee:</label>
-                        <input type="number" name="nuclee" id="nuclee" value="<?=$row["nuclee"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="mem-interna">Memorie interna:</label>
-                        <input type="number" name="mem-interna" id="mem-interna" value="<?=$row["mem_interna"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="mem-ram">Memorie RAM:</label>
-                        <input type="number" name="mem-ram" id="mem-ram" value="<?=$row["mem_ram"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="sloturi-sim">Sloturi SIM:</label>
-                        <input type="number" name="sloturi-sim" id="sloturi-sim" value="<?=$row["sloturi_sim"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="stoc">Stoc:</label>
-                        <input type="number" name="stoc" id="stoc" value="<?=$row["stoc"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="pret">Pret:</label>
-                        <input type="number" name="pret" id="pret" value="<?=$row["pret"]?>" >
-                    </div>
-                    <div class="form-row">
-                        <label for="imagine">Imagine:</label>
-                        <input type="file" name="imagine" id="imagine">
+                        <label for="conf-pass">Confirma parola:</label>
+                        <input type="password" name="conf-pass" id="conf-pass" value="<?=$row["parola"]?>" >
                     </div>
 
                     <div class="form-row">
-                    <input type="submit" name="submit" value="Modifica">
+                    <input type="submit" name="submit" value="Salveaza">
                     </div>
 
                 </form>

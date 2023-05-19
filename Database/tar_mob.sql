@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 04:20 PM
+-- Generation Time: May 19, 2023 at 06:28 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -61,15 +61,6 @@ CREATE TABLE `clienti` (
   `telefon` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `clienti`
---
-
-INSERT INTO `clienti` (`id_client`, `id_user`, `nume`, `adresa`, `localitate`, `judet`, `telefon`) VALUES
-(4, 2, 'Irimus Adrian', 'Str. Lalelelor, nr. 49', 'Alba Iulia', 'Alba', '0770181430'),
-(5, 3, 'Irimus Andrei', 'Str. Aleei, Nr. 12, bl. A4, ap. 4', 'Sebes', 'Alba', '0745248642'),
-(6, 4, 'Popescu Alex', 'Str. Hanului, Nr. 98', 'Turda', 'Cluj', '0746836832');
-
 -- --------------------------------------------------------
 
 --
@@ -82,15 +73,6 @@ CREATE TABLE `comenzi` (
   `data` date NOT NULL,
   `stare` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `comenzi`
---
-
-INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
-(1, 4, '2019-05-23', 'In tranzit'),
-(2, 5, '2022-09-14', 'In curs de pregatire'),
-(3, 6, '2023-04-03', 'Spre destinatia clientului');
 
 -- --------------------------------------------------------
 
@@ -106,24 +88,6 @@ CREATE TABLE `facturi` (
   `pret` double NOT NULL,
   `cantitate` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `facturi`
---
-
-INSERT INTO `facturi` (`id_fact`, `nr_fact`, `nr_comanda`, `id_produs`, `pret`, `cantitate`) VALUES
-(1, 10001, 1, 3, 700, 1),
-(2, 0, 2, 3, 0, 4),
-(3, 0, 3, 2, 6330721.100000001, 10),
-(4, 10002, 3, 1, 647354.136, 5),
-(6, 10003, 3, 1, 647354.136, 5),
-(7, 10005, 2, 1, 0, 5),
-(8, 10005, 2, 1, 1, 5),
-(9, 10005, 2, 1, 647354.136, 5),
-(10, 10005, 2, 1, 647354.136, 5),
-(11, 10006, 2, 1, 647354.136, 5),
-(12, 10007, 2, 1, 4220.04, 5),
-(13, 10007, 3, 2, 26389.000000000004, 10);
 
 -- --------------------------------------------------------
 
@@ -170,7 +134,8 @@ INSERT INTO `produse` (`id_produs`, `marca`, `model`, `diagonala`, `rezolutie`, 
 (12, 'SONY', 'XPERIA 5 IV', 6.1, '2500x1080', 'OLED', 'ANDROID', 12, 'Snapdragon 8 Gen 1 Mobile Platform', 8, 128, 8, 5000, 2, 99, 4.499, 'telefon-sony-xperia-5-iv-5g-128gb-8gb-ram-dual-sim-green-1_729b4566.webp'),
 (13, 'XIAOMI', '12X', 6.28, '1080x2400', 'AMOLED DOTDISPLAY', 'ANDROID', 11, 'Snapdragon 870 7nm, Kryo 585 CPU pana la 3.2GHz', 8, 128, 8, 4500, 2, 99, 2.679, 'Telefon_XIAOMI_12X_5G_Blue_2_.webp'),
 (14, 'XIAOMI', '11T', 6.67, '1080x2400', 'AMOLED', 'ANDROID', 13, 'MediaTek Dimensity 1200 6nm', 8, 256, 8, 5000, 2, 99, 1.889, 'Telefon_XIAOMI_Mi_11T_5G_256GB_8GB_RAM_Dual_SIM_Moonlight_White_7_.webp'),
-(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp');
+(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp'),
+(17, 'NOKIA', '1310', 2.1, '300x200', 'LED', 'CEVA', 2, 'Racheta', 1, 0, 0, 1500, 1, 20, 500, 'res_f7eb764947d09b3a9971d9421f2efe27.webp');
 
 --
 -- Triggers `produse`
@@ -203,9 +168,7 @@ CREATE TABLE `utilizator` (
 
 INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, `email`) VALUES
 (1, 'Admin', 'Admin', 0x243279243130244775756b6c385950736e35525253656a35526547354f61505a6b2e374363444d51486d772f667139584e54416f736d6261542f6d71, 'admin@root.com'),
-(2, 'adi_irimus22', 'Adi Irimus', 0x24327924313024764e5541656c6558714b6337676d4a724834706e612e5068333635744f58513231465879354e42454f4949626e445461364f79416d, 'adi@irimus.ro'),
-(3, 'andrei_irimus7', 'Andrei Irimus', 0x24327924313024573872325678314e34464a74576b364c6e336133364f6e6873574e734c784946564869686c35323272712e7038396d577463514665, 'andrei@irimus.ro'),
-(4, 'alex_popescu', 'Alex Popescu', 0x243279243130246f70696937723547684633576a48487059557375427559495739434a4d4b47764d5375694f4e6e3166584c635a725a4e7433633253, 'alex@popescu.ro');
+(10, 'adi_irimus22', 'Adi Irimus', 0x24327924313024326a4668736e4952684c6f3743424e4c5a4b782f676561654156346479306668786b4232697430474b506f35626c4351644c703843, 'adi@irimus.ro');
 
 --
 -- Indexes for dumped tables
@@ -271,13 +234,13 @@ ALTER TABLE `facturi`
 -- AUTO_INCREMENT for table `produse`
 --
 ALTER TABLE `produse`
-  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_produs` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `utilizator`
 --
 ALTER TABLE `utilizator`
-  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -287,20 +250,20 @@ ALTER TABLE `utilizator`
 -- Constraints for table `clienti`
 --
 ALTER TABLE `clienti`
-  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `utilizator` (`id_utilizator`);
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `utilizator` (`id_utilizator`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comenzi`
 --
 ALTER TABLE `comenzi`
-  ADD CONSTRAINT `fk_id_client` FOREIGN KEY (`id_client`) REFERENCES `clienti` (`id_client`);
+  ADD CONSTRAINT `fk_id_client` FOREIGN KEY (`id_client`) REFERENCES `clienti` (`id_client`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `facturi`
 --
 ALTER TABLE `facturi`
   ADD CONSTRAINT `fk_id_produs` FOREIGN KEY (`id_produs`) REFERENCES `produse` (`id_produs`),
-  ADD CONSTRAINT `fk_nr_comanda` FOREIGN KEY (`nr_comanda`) REFERENCES `comenzi` (`nr_comanda`);
+  ADD CONSTRAINT `fk_nr_comanda` FOREIGN KEY (`nr_comanda`) REFERENCES `comenzi` (`nr_comanda`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
