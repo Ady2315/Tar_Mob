@@ -8,10 +8,8 @@
         $row = $result->fetch_array();
         $imagine = $row['imagine'];
         // $conn->close();
-        if (unlink($cale . $imagine) === TRUE) {
-            echo "da";
-        }
-        else { echo "nu"; }
+        unlink($cale . $imagine);
+        
         
         // require('mysql.php');
         $delete = "DELETE FROM produse WHERE id_produs=$id;";
