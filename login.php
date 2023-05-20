@@ -46,9 +46,9 @@
 ?>
 
 <div class="op-container login-container">
-    <form action="" method="POST" class="login">
+    <form action="" method="POST" class="login form bg-box-dark">
         <div class="form-row">
-            <a href="index.php">Inapoi</a>
+            <a href="index.php" class="link-noeffects color-dark-effect"><i class="bi bi-arrow-bar-left"></i></a>
             <h3>Conecteaza-te</h3>
         </div>
         <div class="form-row">
@@ -62,7 +62,7 @@
             <span class="error"><?php echo $parolaErrL; ?></span>
         </div>
         <div class="form-row">
-            <a href="register.php">Nu ai cont?</a>
+            <a href="register.php" class="link-noeffects color-dark-effect">Nu ai cont?</a>
             <input type="submit" name="submit" value="Conecteaza-te">
         </div>
     </form>

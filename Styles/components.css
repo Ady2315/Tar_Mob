@@ -137,7 +137,7 @@ body {
 .card-container {
     display: grid;
     /* grid-template-columns: repeat(4, 1fr); */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 150px));
     gap: 1rem;
 }
 .card {
@@ -201,6 +201,11 @@ body {
     align-self: flex-end;
     cursor: not-allowed;
 }
+.filter-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
 /* Footer  */
 .footer {
@@ -229,10 +234,13 @@ body {
     flex-direction: column;
     align-items: flex-end;
 }
-.form-row {
+/* .form-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+} */
+#contact {
+    align-items: stretch;
 }
 .addr-row {
     display: flex;
@@ -240,10 +248,36 @@ body {
     align-items: center;
     gap: 1rem;
 }
-address {
+.adresa {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    background-color: #5a0017;
+    height: fit-content;
+    padding: 25px;
+    border-radius: 2rem;
+}
+.addr-row > p {
+    text-overflow:ellipsis;
+}
+.social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.bi-facebook {
+    color: #3b5998;
+}
+.bi-whatsapp {
+    color: #25d366;
+}
+.bi-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bi-facebook, .bi-whatsapp, .bi-instagram {
+    font-size: 2rem;
 }
 
 /* Login and Register form */
@@ -257,10 +291,6 @@ address {
     width: 100%;
     height: 100%;
 }
-.form-row {
-    
-}
-
 /* Pagina produs */
 .big-card {
     display: grid;
@@ -314,4 +344,40 @@ address {
 }
 .spec-title, .spec-descript {
     margin: 0;
+}
+
+/* General form structure */
+.form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.form-textarea {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+input, textarea {
+    width:auto;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    border: 2px solid #171717;
+}
+input:focus {
+    border: 2px solid #DA0037;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 25px;
+    border-radius: 2rem;
 }

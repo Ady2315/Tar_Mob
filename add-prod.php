@@ -1,6 +1,6 @@
 <?php require('header.php'); ?>
 
-<article>
+<article class="wrapper">
     <header>
         <h1>Adaugati un produs</h1>
     </header>
@@ -60,7 +60,7 @@
 
 
                 ?>
-                <form id="editProdus" action="" method="POST" enctype="multipart/form-data">
+                <form class="form bg-box-dark" id="editProdus" action="" method="POST" enctype="multipart/form-data">
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>

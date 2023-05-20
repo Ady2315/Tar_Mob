@@ -1,70 +1,95 @@
 <?php require('header.php'); ?>
 
-<article>
+<article class="wrapper">
     <header>
         <h1>Daca doriti sa modificati datele contului, la final apasati pe butonul de salvare</h1>
     </header>
 
 
     <?php
+        $success = "";
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
 
             require('mysql.php');
 
             if (isset($_POST['submit'])) {
-                //daca s-a efectuat trimiterea formularului
-                //actualizăm înregistrarea în baza de date
-                $imagine = "";
-                if (isset($_FILES['imagine'])) {
-                    if($_FILES['imagine']['name'] != "") {
-                        if(str_contains($_FILES['imagine']['type'], "image") && $_FILES['imagine']['name'] != "") {
-                            $cale = "./Images/produse/";
-                            $imagine = $_FILES['imagine'];
-                            copy($imagine['tmp_name'], $cale . $imagine['name'] ) or die( "Could not copy file" );
+                            $numeErrR = $usernameErrR = $emailErrR = $parolaErrR = $parolaConfirmErrR = "";  
+                $numeR = $usernameR = $emailR = $parolaR = $parolaConfirm = "";
+                $successR = $errorR = "";
+
+                require('mysql.php');
+                    if (empty($_POST['nume'])) {  
+                        $numeErrR = "Introduceti un nume";  
+                    } 
+                    else {  
+                        $numeR = format($_POST['nume']);  
+                        if (!preg_match("/^[a-zA-Z-' ]*$/",$numeR)) {  
+                            $numeErrR = "Numele trebuie sa contina doar litere";  
+                        } 
+                    }
+                    if (empty($_POST['username'])) {  
+                        $usernameErrR = "Introduceti un nume de utilizator";  
+                    } 
+                    else {  
+                        $usernameR = format($_POST['username']);  
+                    }    
+                    if (empty($_POST['e-mail'])) {  
+                        $emailErrR = "Introduceti un email";  
+                    } 
+                    else {  
+                        $emailR = format($_POST['e-mail']);
+                        if (!filter_var($emailR, FILTER_VALIDATE_EMAIL)) {  
+                            $emailErrR = "Email invalid";
                         }
-                        else {
-                            echo "Nu este o imagine valida!";
+                        $query = "SELECT * from utilizator;";
+                        $verify = $conn->query($query);
+                        if ($verify->num_rows > 0) {
+                            while($row = $verify->fetch_array()) {
+                                if ($row['email'] === $emailR) {
+                                    $emailErrR = "Emailul exista deja!";
+                                }
+                            }
                         }
                     }
-                }
-                if (!empty($imagine)) {
-                    $query = "UPDATE produse
-                    SET marca='".$_POST['marca']."',
-                        model='". $_POST['model'] ."',
-                        diagonala='". $_POST['diagonala'] ."',
-                        rezolutie='". $_POST['rezolutie'] ."',
-                        tip_display='". $_POST['tip-display'] ."',
-                        os='". $_POST['os'] ."',
-                        versiune_os='". $_POST['versiune-os'] ."',
-                        procesor='". $_POST['procesor'] ."',
-                        nuclee='". $_POST['nuclee'] ."',
-                        mem_interna='". $_POST['mem-interna'] ."',
-                        mem_ram='". $_POST['mem-ram'] ."',
-                        sloturi_sim='". $_POST['sloturi-sim'] ."',
-                        stoc='". $_POST['stoc'] ."',
-                        pret='". $_POST['pret'] ."',
-                        imagine='". $imagine['name'] ."'
-                        WHERE id_produs=".$id;
-                }
-                else {
-                    $query = "UPDATE produse
-                    SET marca='".$_POST['marca']."',
-                        model='". $_POST['model'] ."',
-                        diagonala='". $_POST['diagonala'] ."',
-                        rezolutie='". $_POST['rezolutie'] ."',
-                        tip_display='". $_POST['tip-display'] ."',
-                        os='". $_POST['os'] ."',
-                        versiune_os='". $_POST['versiune-os'] ."',
-                        procesor='". $_POST['procesor'] ."',
-                        nuclee='". $_POST['nuclee'] ."',
-                        mem_interna='". $_POST['mem-interna'] ."',
-                        mem_ram='". $_POST['mem-ram'] ."',
-                        sloturi_sim='". $_POST['sloturi-sim'] ."',
-                        stoc='". $_POST['stoc'] ."',
-                        pret='". $_POST['pret'] ."'
-                        WHERE id_produs=".$id;
-                }
+                    if (empty($_POST['parola'])) {
+                        $parolaErrR = "Introduceti o parola";
+                    }
+                    else {
+                        $parolaR = format($_POST['parola']);
+                        $uppercase = preg_match('@[A-Z]@', $parolaR);
+                        $lowercase = preg_match('@[a-z]@', $parolaR);
+                        $number = preg_match('@[0-9]@', $parolaR);
+                        // $specialChars = preg_match('@[^\w]@', $parolaR);
+
+                        if (!$uppercase || !$lowercase || !$number || strlen($parolaR) < 8) {
+                            $parolaErrR = "Parola trebuie sa aiba cel putin 8 caractere, o litera mica, o litera mare, o cifra si un caracter special";
+                        }
+                    }
+                    if ($parolaR != $_POST['parola-confirm']) {
+                        $parolaConfirmErrR = "Parolele nu coincid";
+                    }
+                    if (empty($numeErrR) && empty($emailErrR) && empty($parolaErrR) && empty($parolaConfirmErrR) && empty($usernameErrR)) {
+                        $parolaHash = password_hash($parolaR, PASSWORD_DEFAULT);
+                        $query = "INSERT INTO utilizator (nume_utilizator, nume, email, parola) VALUES ('" . $usernameR . "', '" . $numeR . "', '" . $emailR . "', '" . $parolaHash . "');";
+                        $result = $conn->query($query);
+                        if(empty($result)) {
+                            $errorR = "A intervenit o eroare la inregistrare";
+                        }
+                        else {
+                            $trimite = "da";
+                            $successR = "Inregistrarea a fost facuta cu succes!";
+                            $numeR = $emailR = $parolaR = "";
+                        }
+                    }
+                    $conn->close();
+
+                function format($data) {  
+                    $data = trim($data);  
+                    $data = stripslashes($data);  
+                    $data = htmlspecialchars($data);  
+                    return $data;  
+                }  
 
                 $result = $conn->query($query);
                 if (!$result) {
@@ -82,27 +107,23 @@
                 $result = $conn->query($query);
                 $row = $result->fetch_array();
                 ?>
-                <form id="editCont" action="" method="POST">
+                <form class="form bg-box-dark" id="editCont" action="" method="POST">
 
                     <div class="form-row">
                         <label for="nume">Nume:</label>
                         <input type="text" name="nume" id="nume" value="<?=$row["nume"]?>">
-                        <input type="checkbox" name="nume-nou" id="nume-nou">
                     </div>
                     <div class="form-row">
                         <label for="username">Nume utilizator:</label>
                         <input type="text" name="username" id="username" value="<?=$row["nume_utilizator"]?>" >
-                        <input type="checkbox" name="user-nou" id="user-nou">
                     </div>
                     <div class="form-row">
                         <label for="e-mail">Email:</label>
                         <input type="email" name="e-mail" id="e-mail" value="<?=$row["email"]?>">
-                        <input type="checkbox" name="email-nou" id="email-nou">
                     </div>
                     <div class="form-row">
                         <label for="parola">Parola:</label>
                         <input type="password" name="parola" id="parola" value="<?=$row["parola"]?>">
-                        <input type="checkbox" name="parola-noua" id="parola-noua">
                     </div>
                     <div class="form-row">
                         <label for="conf-pass">Confirma parola:</label>

@@ -91,9 +91,9 @@
 ?> 
 
 <div class="op-container register-container">
-    <form action="" method="post" class="register">
+    <form action="" method="post" class="register form bg-box-dark">
         <div class="form-row">
-            <a href="#">Inapoi</a>
+            <a href="index.php" class="link-noeffects color-dark color-dark-effect"><i class="bi bi-arrow-bar-left"></i></a>
             <h3>Inregistreaza-te</h3>
         </div>
         <div class="form-row">
@@ -122,7 +122,7 @@
             <span class="error"><?php echo $parolaConfirmErrR; ?></span>
         </div>
         <div class="form-row">
-            <a href="login.php">Ai deja un cont?</a>
+            <a href="login.php" class="link-noeffects color-dark-effect">Ai deja un cont?</a>
             <input type="submit" value="Creaza contul">
             <span class="success"><?php echo $successR; ?></span>
         </div>

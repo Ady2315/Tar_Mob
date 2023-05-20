@@ -51,7 +51,9 @@
                     <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
                         <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
-                    <li class="nav-list-item"><button class="search-btn"><i class="bi bi-search color-dark-effect"></i></button></li>
+                    <?php if ($_SESSION['active']) { ?>
+                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark"><i class="bi bi-cart"></i></a></li>
+                    <?php } ?>
                 </ul>
             </nav>
             <nav id="mobile">

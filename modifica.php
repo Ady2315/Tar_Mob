@@ -1,6 +1,6 @@
 <?php require('header.php'); ?>
 
-<article>
+<article class="wrapper">
     <header>
         <h1>Modificati datele produsului</h1>
     </header>
@@ -41,6 +41,7 @@
                         nuclee='". $_POST['nuclee'] ."',
                         mem_interna='". $_POST['mem-interna'] ."',
                         mem_ram='". $_POST['mem-ram'] ."',
+                        baterie='". $_POST['baterie'] ."',
                         sloturi_sim='". $_POST['sloturi-sim'] ."',
                         stoc='". $_POST['stoc'] ."',
                         pret='". $_POST['pret'] ."',
@@ -60,6 +61,7 @@
                         nuclee='". $_POST['nuclee'] ."',
                         mem_interna='". $_POST['mem-interna'] ."',
                         mem_ram='". $_POST['mem-ram'] ."',
+                        baterie='". $_POST['baterie'] ."',
                         sloturi_sim='". $_POST['sloturi-sim'] ."',
                         stoc='". $_POST['stoc'] ."',
                         pret='". $_POST['pret'] ."'
@@ -83,7 +85,7 @@
                 $row = $result->fetch_array();
 
                 ?>
-                <form id="editProdus" action="" method="POST">
+                <form class="form bg-box-dark" id="editProdus" action="" method="POST">
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>
@@ -128,6 +130,10 @@
                     <div class="form-row">
                         <label for="mem-ram">Memorie RAM:</label>
                         <input type="number" name="mem-ram" id="mem-ram" value="<?=$row["mem_ram"]?>" >
+                    </div>
+                    <div class="form-row">
+                        <label for="baterie">Baterie:</label>
+                        <input type="number" name="baterie" id="baterie" value="<?=$row["baterie"]?>" >
                     </div>
                     <div class="form-row">
                         <label for="sloturi-sim">Sloturi SIM:</label>

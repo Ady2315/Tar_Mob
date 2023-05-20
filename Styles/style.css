@@ -9,6 +9,10 @@
     font-family: 'Roboto Slab', serif;
     /* border: 1px dashed red; */
 }
+body {
+    position: relative;
+    margin: 0;
+}
 
 .contur {
     outline: 1px dashed red;
@@ -48,6 +52,7 @@
 #contact {
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 }
 .addr-row > * {
     margin: 0;
@@ -83,4 +88,11 @@
   
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.bi-arrow-bar-left {
+    font-size: 2em;
+}
+.bi-cart {
+    font-size: 1.5em;
 }
