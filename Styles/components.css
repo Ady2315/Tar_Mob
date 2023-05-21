@@ -381,3 +381,25 @@ input:focus {
     padding: 25px;
     border-radius: 2rem;
 }
+
+/* Pagina cos produse */
+.cos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: auto;
+}
+.wide-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: auto;   
+}
+.wide-card-img {
+    width: 250px;
+}

@@ -20,3 +20,13 @@
 .bg-color-effect:active {
     background-color: #fc2359;
 }
+.bg-warning {
+    background-color: #bd002f;
+    color: #EDEDED;
+}
+.bg-warning:hover {
+    background-color: #DA0037;
+}
+.bg-warning:active {
+    background-color: #e7174b;
+}

@@ -10,7 +10,7 @@
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) { ?>
-            <section class="big-card bg-box-dark">
+            <article class="big-card bg-box-dark">
                 <h2 class="big-card-title"><?php echo $row['marca'] . ' ' . $row['model']; ?></h2>
                 <!-- <div class="big-card-img"></div> -->
                 <img src="./Images/produse/<?php echo $row['imagine']; ?>" alt="" class="big-card-img">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </article>
     <?php }
     }
 ?>

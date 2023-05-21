@@ -25,6 +25,91 @@
         setcookie("nume", $_SESSION['nume'], time() + (86400 * 30), "/");
         setcookie("id_user", $_SESSION['id_user'], time() + (86400 * 30), "/");
     }
+
+    if (isset($_GET['id_produs']) && isset($_GET['cos'])) {
+        $id = $_GET['id_produs'];
+        $cos = $_GET['cos'];
+        if ($cos == "adauga") {
+            if (isset($_COOKIE['cos']) && isset($_COOKIE)) {
+                $produse = exportCookieCart();
+                $produse[$id] = 1;
+
+                importCookieCart($produse);
+            }
+            else {
+                $data = "$id=>1";
+                setcookie("cos", $data, time() + (86400 * 30), "/");
+            }
+            header("refresh: 0.1; url = produse.php");
+            // header("refresh: 1; url = produse.php");
+        }
+        if ($cos == "sterge") {
+            $produse = exportCookieCart();
+
+            unset($produse[$id]);
+
+            if (empty($produse)) {
+                unset($_COOKIE['cos']);
+                setcookie("cos", "", time() - 3600, "/");
+            }
+            else {
+                importCookieCart($produse);
+            }
+
+            header("refresh: 0.1; url = cos.php");
+        }
+    }
+    if (isset($_GET['id_prod'])) {
+        $produs = $_GET['id_prod'];
+        if (isset($_GET['cos'])) {
+            $cos = $_GET['cos'];
+            $arr = exportCookieCart();
+            $amount = $arr[$produs];
+            if ($cos == "decrement") {
+                $amount--;
+                if ($amount <= 0) {
+                    unset($arr[$produs]);
+                    var_dump($arr);
+                    if (empty($arr)) {
+                        setcookie("cos", "", time() - 3600, "/");
+                    }
+                }
+                else {
+                    $arr[$produs] = $amount;
+                }
+            }
+            if ($cos == "increment") {
+                $amount++;
+                $arr[$produs] = $amount;
+            }
+            importCookieCart($arr);
+        }
+        header("refresh: 0.1; url = cos.php");
+    }
+
+    function exportCookieCart() {
+        $data = explode('=>', $_COOKIE['cos']);
+        $keys = explode(';', $data[0]);
+        $vals = explode(';', $data[1]);
+        $arr = array_combine($keys, $vals);
+        foreach($arr as $key => $a) {
+            if (empty($key) && empty($a)) {
+                unset($arr[$key]);
+            }
+        }
+        return $arr;
+    }
+    function importCookieCart($arr) {
+        foreach($arr as $key => $a) {
+            if (empty($key) && empty($a)) {
+                unset($arr[$key]);
+            }
+        }
+        $keys = implode(';', array_keys($arr));
+        $vals = implode(';', array_values($arr));
+        $data = "$keys=>$vals";
+        setcookie("cos", $data, time() + (86400 * 30), "/");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +137,28 @@
                         <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
                     <?php if ($_SESSION['active']) { ?>
-                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark"><i class="bi bi-cart"></i></a></li>
+                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
+                            <i class="bi bi-cart"></i></a>
+                            <span class="error">
+                                <?php
+                                    if (isset($_COOKIE)) {
+                                        if (isset($_COOKIE['cos'])) {
+                                            $adaugate = 0;
+                                            $produse = exportCookieCart();
+                                            if (!empty($produse)) {
+                                                foreach ($produse as $name => $value) {
+                                                    $adaugate++;
+                                                }
+                                                echo $adaugate;
+                                            }
+                                            else {
+                                                $adaugate = 0;
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </span>
+                        </li>
                     <?php } ?>
                 </ul>
             </nav>
