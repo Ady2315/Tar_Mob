@@ -1,11 +1,11 @@
 <?php require('header.php'); ?>
 
-<div id="contact">
-    <address>
+<div id="contact" class="wrapper">
+    <address class="adresa">
         <h3>Ne puteti gasi:</h3>
         <div class="addr-row">
             <h4>Sediu:</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque cupiditate amet deserunt similique, tempora repellat.</p>
+            <p>Strada Aleei Verzi, Numarul 49, Bloc A2G, Parter, Cartier Olreana </p>
         </div>
         <div class="addr-row">
             <h4>Localitate:</h4>
@@ -29,7 +29,7 @@
         </div>
     </address>
 
-    <form action="" method="POST" id="formular-contact">
+    <form action="" method="POST" id="formular-contact" class="form bg-box-dark">
         <div class="form-row">
             <h3>Pentru intrebari sau curiozitati:</h3>
         </div>
@@ -45,7 +45,7 @@
             <label for="telefon">Telefon:</label>
             <input type="tel" name="telefon" id="telefon">
         </div>
-        <div class="form-row flex-col">
+        <div class="form-row form-textarea">
             <label for="comment">Comentariu:</label>
             <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         </div>

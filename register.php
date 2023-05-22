@@ -29,7 +29,7 @@
             $usernameErrR = "Introduceti un nume de utilizator";  
         } 
         else {  
-            $usernameR = format($_POST['nume']);  
+            $usernameR = format($_POST['username']);  
         }    
         if (empty($_POST['e-mail'])) {  
             $emailErrR = "Introduceti un email";  
@@ -91,39 +91,40 @@
 ?> 
 
 <div class="op-container register-container">
-    <form action="" method="post" class="register">
+    <form action="" method="post" class="register form bg-box-dark">
         <div class="form-row">
-            <a href="#">Inapoi</a>
+            <a href="index.php" class="link-noeffects color-dark color-dark-effect"><i class="bi bi-arrow-bar-left"></i></a>
             <h3>Inregistreaza-te</h3>
         </div>
         <div class="form-row">
             <label for="nume">Nume:</label>
-            <input type="text" name="nume" id="nume" value="<?php echo $numeR; ?>">
+            <input type="text" name="nume" id="nume" value="<?php echo $numeR; ?>" class="inputs">
             <span class="error"><?php echo $numeErrR; ?></span>
         </div>
         <div class="form-row">
             <label for="username">Nume utilizator:</label>
-            <input type="text" name="username" id="username" value="<?php echo $usernameR; ?>">
+            <input type="text" name="username" id="username" value="<?php echo $usernameR; ?>" class="inputs">
             <span class="error"><?php echo $usernameErrR; ?></span>
         </div>
         <div class="form-row">
             <label for="e-mail">Email:</label>
-            <input type="email" name="e-mail" id="e-mail" value="<?php echo $emailR; ?>">
+            <input type="email" name="e-mail" id="e-mail" value="<?php echo $emailR; ?>" class="inputs">
             <span class="error"><?php echo $emailErrR; ?></span>
         </div>
         <div class="form-row">
             <label for="parola">Parola:</label>
-            <input type="password" name="parola" id="parola">
+            <input type="password" name="parola" id="parola" class="inputs">
             <span class="error"><?php echo $parolaErrR; ?></span>
         </div>
         <div class="form-row">
             <label for="parola-confirm">Confirma parola:</label>
-            <input type="password" name="parola-confirm" id="parola-confirm">
+            <input type="password" name="parola-confirm" id="parola-confirm" class="inputs">
             <span class="error"><?php echo $parolaConfirmErrR; ?></span>
         </div>
         <div class="form-row">
-            <a href="login.php">Ai deja un cont?</a>
-            <input type="submit" value="Creaza contul">
+            <a href="login.php" class="link-noeffects color-dark-effect">Ai deja un cont?</a>
+            <button type="submit" class="inputs btn btn-success">Creaza contul</button>
+            <span class="success"><?php echo $successR; ?></span>
         </div>
     </form>
 </div>

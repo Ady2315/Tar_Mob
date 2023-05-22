@@ -1,7 +1,8 @@
 <?php require('header.php'); ?>
 
-<article>
+<article class="wrapper">
     <header>
+    <h3><a href="edit.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
         <h1>Adaugati un produs</h1>
     </header>
 
@@ -60,75 +61,75 @@
 
 
                 ?>
-                <form id="editProdus" action="" method="POST" enctype="multipart/form-data">
+                <form class="form bg-box-dark" id="editProdus" action="" method="POST" enctype="multipart/form-data">
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>
-                        <input type="text" name="marca" id="marca">
+                        <input type="text" name="marca" id="marca" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="model">Model:</label>
-                        <input type="text" name="model" id="model">
+                        <input type="text" name="model" id="model" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="diagonala">Diagonala:</label>
-                        <input type="number" name="diagonala" id="diagonala">
+                        <input type="text" name="diagonala" id="diagonala" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="rezolutie">Rezolutie:</label>
-                        <input type="text" name="rezolutie" id="rezolutie">
+                        <input type="text" name="rezolutie" id="rezolutie" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="tip-display">Tip display:</label>
-                        <input type="text" name="tip-display" id="tip-display">
+                        <input type="text" name="tip-display" id="tip-display" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="os">Sistem de operare:</label>
-                        <input type="text" name="os" id="os">
+                        <input type="text" name="os" id="os" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="versiune-os">Versiune:</label>
-                        <input type="number" name="versiune-os" id="versiune-os">
+                        <input type="text" name="versiune-os" id="versiune-os" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="procesor">Procesor:</label>
-                        <input type="text" name="procesor" id="procesor">
+                        <input type="text" name="procesor" id="procesor" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="nuclee">Numar nuclee:</label>
-                        <input type="number" name="nuclee" id="nuclee">
+                        <input type="text" name="nuclee" id="nuclee" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="mem-interna">Memorie interna:</label>
-                        <input type="number" name="mem-interna" id="mem-interna">
+                        <input type="text" name="mem-interna" id="mem-interna" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="mem-ram">Memorie RAM:</label>
-                        <input type="number" name="mem-ram" id="mem-ram">
+                        <input type="text" name="mem-ram" id="mem-ram" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="baterie">Baterie:</label>
-                        <input type="number" name="baterie" id="baterie">
+                        <input type="text" name="baterie" id="baterie" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="sloturi-sim">Sloturi SIM:</label>
-                        <input type="number" name="sloturi-sim" id="sloturi-sim">
+                        <input type="number" name="sloturi-sim" id="sloturi-sim" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="stoc">Stoc:</label>
-                        <input type="number" name="stoc" id="stoc">
+                        <input type="number" name="stoc" id="stoc" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="pret">Pret:</label>
-                        <input type="number" name="pret" id="pret">
+                        <input type="text" name="pret" id="pret" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="">Imagine:</label>
-                        <input type="file" name="imagine-produs" id="imagine-produs">
+                        <input type="file" name="imagine-produs" id="imagine-produs" class="inputs">
                     </div>
 
                     <div class="form-row">
-                    <input type="submit" name="submit" value="Adauga">
+                    <button type="submit" name="submit" class="inputs btn btn-success w-full">Adauga</button>
                     </div>
 
                 </form>

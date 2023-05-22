@@ -4,7 +4,7 @@
 ?>
     <h2>Ultimele aparitii</h2>
     <section id="new-products">
-        <div id="products-list" class="card-container">
+        <div id="products-list" class="home-card-container">
             <?php
                 require('mysql.php'); 
                 $query = "SELECT * FROM (SELECT * FROM produse ORDER BY id_produs DESC LIMIT 5) Var1 ORDER BY id_produs ASC;";

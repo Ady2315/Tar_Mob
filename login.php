@@ -17,7 +17,7 @@
         require('mysql.php');
         $usernameL = $_POST['username'];
         $parolaL = $_POST['parola'];
-        $query = "SELECT nume_utilizator, nume, parola, email FROM utilizator WHERE email='$usernameL' OR nume_utilizator='$usernameL';";
+        $query = "SELECT * FROM utilizator WHERE email='$usernameL' OR nume_utilizator='$usernameL';";
         $result = $conn->query($query);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_array()) {
@@ -25,11 +25,11 @@
                 // var_dump($verify);
                 if($verify === true) {
                     $_SESSION['nume'] = $row['nume'];
-                    $_SESSION['user'] = $row['nume_utilizator'];
+                    $_SESSION['id_user'] = $row['id_utilizator'];
 
                     $_SESSION['active'] = true;
                     $conn->close();
-                    echo "<meta http-equiv=\"refresh\" content=\"1; URL='index.php'\" >";
+                    echo "<meta http-equiv=\"refresh\" content=\"0.1; URL='index.php'\" >";
 
                     exit;
                 }
@@ -46,24 +46,24 @@
 ?>
 
 <div class="op-container login-container">
-    <form action="" method="POST" class="login">
+    <form action="" method="POST" class="login form bg-box-dark">
         <div class="form-row">
-            <a href="index.php">Inapoi</a>
+            <a href="index.php" class="link-noeffects color-dark-effect"><i class="bi bi-arrow-bar-left"></i></a>
             <h3>Conecteaza-te</h3>
         </div>
         <div class="form-row">
             <label for="username">Nume utilizator:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" class="inputs">
             <span class="error"><?php echo $emailErrL; ?></span>
         </div>
         <div class="form-row">
             <label for="parola">Parola:</label>
-            <input type="password" name="parola" id="parola">
+            <input type="password" name="parola" id="parola" class="inputs">
             <span class="error"><?php echo $parolaErrL; ?></span>
         </div>
         <div class="form-row">
-            <a href="register.php">Nu ai cont?</a>
-            <input type="submit" name="submit" value="Conecteaza-te">
+            <a href="register.php" class="link-noeffects color-dark-effect">Nu ai cont?</a>
+            <button type="submit" name="submit" class="inputs btn btn-success">Conecteaza-te</button>
         </div>
     </form>
 </div>

@@ -1,68 +1,49 @@
-@media screen and (max-width: 700px) {
-    #desktop {
-        display: none;
-    }
-    .burger-menu {
-        display: block;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    /* Home page */
+    .nav-container {
+        padding-inline: 3rem;
     }
     .container {
-        margin: 10px;
-        padding: 10px;
+        margin: 1.5rem;
+        padding: 1.5rem;
     }
-}
-
-@media screen and (max-width: 825px) {
-    .arrow {
-        width: 50px;
-        height: 50px;
+    .hero {
+        margin-inline: 0;
+        padding-inline: 0;
+        margin-top: 0;
     }
-    .bi-arrow-right-circle, .bi-arrow-left-circle {
-        font-size: 2em;
+    .hero-image {
+        margin: 0;
     }
-}
-
-@media screen and (max-width: 975px) {
+    .home-card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    /* Pagina produse */
     .card-container {
-        /* grid-template-columns: repeat(3, 1fr); */
+        grid-template-columns: repeat(3, 1fr);
     }
-}
-@media screen and (max-width: 735px) {
-    .card-container {
-        /* grid-template-columns: repeat(2, 1fr); */
+    .filter-btn {
+        flex-direction: column;
     }
-    .sidebar {
-        float:none;
+    #search-button, #reset-button {
         width: 100%;
-        /* margin-right: 1rem; */
     }
-    .filter-group {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .checkbox-group {
-        margin: 1rem;
-    }
-}
-@media screen and (max-width: 525px) {
-    .card-container {
-        
-    }
-    .card-price {
-        font-size: 1.5em;
-    }
-}
-@media screen and (max-width: 360px) {
-    .card-container {
-        
-    }
-    .card-price {
-        font-size: 1em;
-    }
-    .card-title {
-        font-size: 0.7em;
-    }
-    .btn-primary {
-        font-size: 0.8em;
-    }
+    /* Pagina admin */
+    
 }

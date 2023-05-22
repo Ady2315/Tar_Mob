@@ -2,18 +2,113 @@
     session_start();
     
     if (!isset($_SESSION['active'])) {
-        if ($_COOKIE['active']) {
-            $_SESSION['active'] = true;
-            $_SESSION['nume'] = $_COOKIE['nume'];
+        if (isset($_COOKIE)) {
+            if (isset($_COOKIE['active']) && isset($_COOKIE['nume'])) {
+                $_SESSION['active'] = $_COOKIE['active'];
+                $_SESSION['nume'] = $_COOKIE['nume'];
+                $_SESSION['id_user'] = $_COOKIE['id_user'];
+            }
+            else {
+                $_SESSION['active'] = false;
+                $_SESSION['nume'] = "";
+                $_SESSION['id_user'] = 0;
+            }
         }
         else {
-            $_SESSION['active'] = false;
+            setcookie("active", false, time() + (86400 * 30), "/");
+            setcookie("nume", "", time() + (86400 * 30), "/");
+            setcookie("id_user", 0, time() + (86400 * 30), "/");
         }
     }
     else {
         setcookie("active", $_SESSION['active'], time() + (86400 * 30), "/");
         setcookie("nume", $_SESSION['nume'], time() + (86400 * 30), "/");
-        setcookie("user", $_SESSION['user'], time() + (86400 * 30), "/");
+        setcookie("id_user", $_SESSION['id_user'], time() + (86400 * 30), "/");
+    }
+
+    if (isset($_GET['id_produs']) && isset($_GET['cos'])) {
+        $id = $_GET['id_produs'];
+        $cos = $_GET['cos'];
+        if ($cos == "adauga") {
+            if (isset($_COOKIE['cos']) && isset($_COOKIE)) {
+                $produse = exportCookieCart();
+                $produse[$id] = 1;
+
+                importCookieCart($produse);
+            }
+            else {
+                $data = "$id=>1";
+                setcookie("cos", $data, time() + (86400 * 30), "/");
+            }
+            header("refresh: 0.1; url = produse.php");
+            // header("refresh: 1; url = produse.php");
+        }
+        if ($cos == "sterge") {
+            $produse = exportCookieCart();
+
+            unset($produse[$id]);
+
+            if (empty($produse)) {
+                unset($_COOKIE['cos']);
+                setcookie("cos", "", time() - 3600, "/");
+            }
+            else {
+                importCookieCart($produse);
+            }
+
+            header("refresh: 0.1; url = cos.php");
+        }
+    }
+    if (isset($_GET['id_prod'])) {
+        $produs = $_GET['id_prod'];
+        if (isset($_GET['cos'])) {
+            $cos = $_GET['cos'];
+            $arr = exportCookieCart();
+            $amount = $arr[$produs];
+            if ($cos == "decrement") {
+                $amount--;
+                if ($amount <= 0) {
+                    unset($arr[$produs]);
+                    var_dump($arr);
+                    if (empty($arr)) {
+                        setcookie("cos", "", time() - 3600, "/");
+                    }
+                }
+                else {
+                    $arr[$produs] = $amount;
+                }
+            }
+            if ($cos == "increment") {
+                $amount++;
+                $arr[$produs] = $amount;
+            }
+            importCookieCart($arr);
+        }
+        header("refresh: 0.1; url = cos.php");
+    }
+
+    function exportCookieCart() {
+        $data = explode('=>', $_COOKIE['cos']);
+        $keys = explode(';', $data[0]);
+        $vals = explode(';', $data[1]);
+        $arr = array_combine($keys, $vals);
+        foreach($arr as $key => $a) {
+            if (empty($key) && empty($a)) {
+                unset($arr[$key]);
+            }
+        }
+        return $arr;
+    }
+    function importCookieCart($arr) {
+        foreach($arr as $key => $a) {
+            if (empty($key) && empty($a)) {
+                unset($arr[$key]);
+            }
+        }
+        $keys = implode(';', array_keys($arr));
+        $vals = implode(';', array_values($arr));
+        $data = "$keys=>$vals";
+        setcookie("cos", $data, time() + (86400 * 30), "/");
     }
 ?>
 <!DOCTYPE html>
@@ -41,7 +136,30 @@
                     <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
                         <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
-                    <li class="nav-list-item"><button class="search-btn"><i class="bi bi-search color-dark-effect"></i></button></li>
+                    <?php if ($_SESSION['active']) { ?>
+                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
+                            <i class="bi bi-cart"></i></a>
+                            <span class="error">
+                                <?php
+                                    if (isset($_COOKIE)) {
+                                        if (isset($_COOKIE['cos'])) {
+                                            $adaugate = 0;
+                                            $produse = exportCookieCart();
+                                            if (!empty($produse)) {
+                                                foreach ($produse as $name => $value) {
+                                                    $adaugate++;
+                                                }
+                                                echo $adaugate;
+                                            }
+                                            else {
+                                                $adaugate = 0;
+                                            }
+                                        }
+                                    }
+                                ?>
+                            </span>
+                        </li>
+                    <?php } ?>
                 </ul>
             </nav>
             <nav id="mobile">
@@ -55,9 +173,9 @@
             <ul class="nav-list">
                 <?php if(isset($_SESSION)) {
                     if($_SESSION['active'] == true) { ?>
-                        <li class="nav-list-item dropdown"><a href="logout.php" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
+                        <li class="nav-list-item dropdown"><a href="#" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
                             <div class="dropdown-content">
-                                <a href="#">Cont</a>
+                                <a href="cont.php?id=<?php echo $_SESSION['id_user']; ?>">Cont</a>
                                 <a href="logout.php">Delogare</a>
                             </div>
                         </li>
