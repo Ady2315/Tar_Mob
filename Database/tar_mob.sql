@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 11:36 AM
+-- Generation Time: May 22, 2023 at 05:37 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -20,9 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
-DROP DATABASE IF EXISTS tar_mob;
-CREATE DATABASE tar_mob;
-USE tar_mob;
 
 DELIMITER $$
 --
@@ -187,7 +184,8 @@ CREATE TABLE `utilizator` (
 
 INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, `email`) VALUES
 (1, 'Admin', 'Admin', 0x243279243130244775756b6c385950736e35525253656a35526547354f61505a6b2e374363444d51486d772f667139584e54416f736d6261542f6d71, 'admin@root.com'),
-(10, 'adi_irimus22', 'Adi Irimus', 0x24327924313024326a4668736e4952684c6f3743424e4c5a4b782f676561654156346479306668786b4232697430474b506f35626c4351644c703843, 'adi@irimus.ro');
+(10, 'adi_irimus22', 'Adi Irimus', 0x24327924313024326a4668736e4952684c6f3743424e4c5a4b782f676561654156346479306668786b4232697430474b506f35626c4351644c703843, 'adi@irimus.ro'),
+(11, 'radu13', 'Radu', 0x24327924313024466c7351647a4467754f632f52745631325a315456754b4174364f74634f30775969343638636a61316e384c525542496979715753, 'radu13@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -258,7 +256,7 @@ ALTER TABLE `produse`
 -- AUTO_INCREMENT for table `utilizator`
 --
 ALTER TABLE `utilizator`
-  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_utilizator` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
