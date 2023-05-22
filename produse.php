@@ -72,7 +72,8 @@
 ?>
 
         <aside class="sidebar">
-            <form action="" method="post">
+            <button class="btn btn-primary w-full filter-button" onclick="ToggleFilter()">Filtreaza</button>
+            <form id="filter-form" class="form filter-form" action="" method="post">
                 <h2>Filtreaza</h2>
                 <div class="filter-group bg-box-dark">
                     <div class="filter-btn">
@@ -192,7 +193,7 @@
         </aside>
 
         <section id="products">
-            <h2>Produse</h2>
+            <h2 class="page-title">Produse</h2>
             <div id="products-list" class="card-container">
             <?php 
                 require('mysql.php'); 

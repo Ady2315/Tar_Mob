@@ -2,7 +2,7 @@
 
 <article class="wrapper">
     <header>
-    <h3><a href="edit.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
+        <h3><a href="edit.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
         <h1>Adaugati un produs</h1>
     </header>
 

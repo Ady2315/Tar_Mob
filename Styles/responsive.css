@@ -95,21 +95,53 @@
         font-size: 0.8em;
         padding: 0.5em;
     }
+    /* Pagina produse */
+    .sidebar {
+        float: none;
+        width: 100%;
+    }
+    .sidebar form > h2 {
+        display: none;
+    }
+    .filter-btn > button {
+        width: 100%;
+    }
+    .form {
+        padding-inline: 0;
+        display: none;
+    }
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     /* Home page */
-    .home-card-container {
+    .home-card-container, .card-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .filter-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .filter-btn {
+        grid-column: 1 / 3;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     /* Home page */
-    .home-card-container {
+    .home-card-container, .card-container {
         grid-template-columns: repeat(4, 1fr);
+    }
+    .filter-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .filter-btn {
+        grid-column: 1 / 4;
     }
     .nav-list-mobile {
         width: 50%;
@@ -143,9 +175,10 @@
         padding: 1.5rem;
     }
     .hero {
-        margin-inline: 0;
+        margin: 0;
         padding-inline: 0;
-        margin-top: 0;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
     }
     .hero-image {
         margin: 0;
@@ -170,18 +203,28 @@
         padding: 0.5em;
     }
     /* Pagina produse */
-    .card-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
     .card-image {
         height: 15em;
     }
+    .card-body {
+        height: 10rem;
+    }
+    .filter-button {
+        display: none;
+    }
+    .filter-form {
+        display: block;
+        padding-top: 0;
+    }
+    .filter-group {
+        grid-template-columns: repeat(4, 1fr);
+    }
     .filter-btn {
-        flex-direction: column;
+        grid-column: 1 / 5;
     }
-    #search-button, #reset-button {
+    /* #search-button, #reset-button {
         width: 100%;
-    }
+    } */
     /* Pagina admin */
     
 }
@@ -194,18 +237,54 @@
         width: 5em;
     }
     .home-card-container {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 150px));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    /* Hero Banner */
+    .hero-image {
+        height: 25em;
+        margin-top: 0;
+    }
+    .hero {
+        padding-inline: 0;
+        margin-inline: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    .dots {
+        display: flex;
+    }
+    .bi-arrow-right-circle, .bi-arrow-left-circle {
+        font-size: 3.5em;
+    }
+    .left-button, .right-button {
+        margin: 3rem;
     }
     /* Home page */
     .container {
         padding: 3rem;
         margin: 3rem;
     }
-    .hero {
-        padding-inline: 0;
-        margin-inline: 0;
+    .card-image {
+        height: 20em;
     }
-    .dots {
-        display: none;
+    .page-title {
+        font-size: 2em;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    /* Pagina produse */
+    .sidebar {
+        float: left;
+        width: 20%;
+    }
+    #filter-form > h2 {
+        display: block;
+        margin: 0;
+        margin-bottom: 20px;
+        font-size: 2em;
+    }
+    .filter-group {
+        display: flex;
+        flex-direction: column;
     }
 }

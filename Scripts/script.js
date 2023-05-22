@@ -51,3 +51,13 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "flex";  
   dots[slideIndex-1].className += " active";
 }
+
+
+function ToggleFilter() {
+  var x = document.getElementById("filter-form");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    } else {
+      x.style.display = "none";
+      }
+}

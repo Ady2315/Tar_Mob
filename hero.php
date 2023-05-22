@@ -3,7 +3,7 @@
     $countImages = count($slideImages);
 ?>
 
-<section id="hero-banner" class="container hero border-bot p-0">
+<section id="hero-banner" class="hero border-bot p-0">
     <?php
         for ($j = 0; $j < $countImages; $j++) { ?>
             <div class="hero-image" style="background-image: url('<?php echo $slideImages[$j]; ?>');">
