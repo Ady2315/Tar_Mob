@@ -1,0 +1,211 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 360px) {
+    /* NavBar */
+    .nav-container {
+        padding-inline: 1rem;
+    }
+    #logo {
+        width: 3rem;
+    }
+    .nav {
+        padding: 5px 0 5px 0;
+    }
+    .burger-menu {
+        display: block;
+    }
+    .bi-list {
+        font-size: 2em;
+    }
+    .bi-person-plus {
+        font-size: 1.5em;
+    }
+    .nav-list-item {
+        margin: 0;
+        padding: 0;
+        padding-inline-start: 1rem;
+    }
+    #desktop {
+        display: none;
+    }
+    .dropbtn {
+        font-size: 0.8em;
+    }
+    .dropdown-content a {
+        font-size: 0.7em;
+        padding: 0.6em 0.4em;
+    }
+    .nav-list-mobile {
+        padding: 1rem;
+        gap: 1rem;
+    }
+    #close-button {
+        padding: 0;
+    }
+    .bi-x-lg {
+        font-size: 2em;
+    }
+    /* Hero banner */
+    .container {
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }
+    .hero {
+        padding-inline: 0;
+        margin-inline: 0;
+    }
+    .dots {
+        display: none;
+    }
+    .bi-arrow-right-circle, .bi-arrow-left-circle {
+        font-size: 2em;
+    }
+    .left-button, .right-button {
+        margin: 0;
+    }
+    .hero-image {
+        height: 15em;
+    }
+    /* Home page */
+    .page-title {
+        font-size: 1em;
+    }
+    .home-card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card {
+        justify-content:flex-start;
+
+    }
+    .card-body {
+        justify-self: end;
+        justify-content: space-between;
+        height: 8rem;
+    }
+    .card-image {
+        height: 10em;
+    }
+    .card-title {
+        font-size: 0.9em;
+    }
+    .card-price {
+        font-size: 1em;
+        justify-self: flex-end;
+    }
+    .btn {
+        font-size: 0.8em;
+        padding: 0.5em;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    /* Home page */
+    .home-card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    /* Home page */
+    .home-card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .nav-list-mobile {
+        width: 50%;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    /* Navbar */
+    #desktop {
+        display: block;
+    }
+    .burger-menu {
+        display: none;
+    }
+    .dropbtn {
+        font-size: 1em;
+    }
+    .nav-list {
+        column-gap: 2rem;
+    }
+    .nav-list-item {
+        padding: 0;
+    }
+    /* Home page */
+    .nav-container {
+        padding-inline: 3rem;
+    }
+    .container {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+    .hero {
+        margin-inline: 0;
+        padding-inline: 0;
+        margin-top: 0;
+    }
+    .hero-image {
+        margin: 0;
+    }
+    .home-card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .card-body {
+        justify-self: end;
+        justify-content: space-between;
+        height: 8rem;
+    }
+    .card-title {
+        font-size: 1em;
+    }
+    .card-price {
+        font-size: 1.2em;
+        justify-self: flex-end;
+    }
+    .btn {
+        font-size: 1em;
+        padding: 0.5em;
+    }
+    /* Pagina produse */
+    .card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card-image {
+        height: 15em;
+    }
+    .filter-btn {
+        flex-direction: column;
+    }
+    #search-button, #reset-button {
+        width: 100%;
+    }
+    /* Pagina admin */
+    
+}
+@media only screen and (min-width: 1200px) {
+    /* Navbar */
+    .nav-container {
+        padding-inline: 6rem;
+    }
+    #logo {
+        width: 5em;
+    }
+    .home-card-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 150px));
+    }
+    /* Home page */
+    .container {
+        padding: 3rem;
+        margin: 3rem;
+    }
+    .hero {
+        padding-inline: 0;
+        margin-inline: 0;
+    }
+    .dots {
+        display: none;
+    }
+}

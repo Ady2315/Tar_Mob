@@ -45,10 +45,9 @@
                 else { ?>
                     <h1>Nu aveti produse adaugate in cos.</h1>
                     <h2>Reveniti la pagina de <a href="produse.php" class="color-dark">produse<i class="bi bi-arrow-left-short"></i></a></h2>
-                <?php }
+        <?php   }
             ?>
         </div>
-        <div class="summary bg-box-dark">
             <?php
                 if (isset($_COOKIE)) {
                     if (isset($_COOKIE['cos'])) {
@@ -63,16 +62,16 @@
                                 while($row = $result->fetch_array()) {
                                     $suma += ($row['pret'] * $arr[$row['id_produs']]);
                                 } ?>
-                                <h2>Valoare cos de cumparaturi</h2>
-                                <h2><?php echo $suma . " Lei"; ?></h2>
-                                <a href="detalii_comanda.php"><button class="btn btn-primary">Continua comanda</button></a>
+                                <div class="summary bg-box-dark">
+                                    <h2>Valoare cos de cumparaturi</h2>
+                                    <h2><?php echo $suma . " Lei"; ?></h2>
+                                    <a href="detalii_comanda.php"><button class="btn btn-primary">Continua comanda</button></a>
+                                </div>
                         <?php }
                         }
                     }
                 }
             ?>
-
-        </div>
     </div>
 <?php } 
     else echo "<meta http-equiv=\"refresh\" content=\"0; URL='index.php'\" >"; ?>

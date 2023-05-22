@@ -2,7 +2,7 @@
     require('header.php'); 
     include('hero.php');
 ?>
-    <h2>Ultimele aparitii</h2>
+    <h2 class="page-title">Ultimele aparitii</h2>
     <section id="new-products">
         <div id="products-list" class="home-card-container">
             <?php
@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <a href="produs.php?id=<?php echo $row['id_produs']; ?>" class="link-noeffects color-dark color-dark-effect"><h3 class="card-title"><?php echo $row['marca'] . " " . $row['model']; ?></h3></a>
                                 <p class="card-text card-price"><?php echo $row['pret'] . " Lei"; ?></p>
-                                <button href="index.php" id="produce-button" class="btn btn-primary w-full bg-color-effect">Adauga in cos</button>
+                                <a href="index.php?id_produs=<?php echo $row['id_produs']; ?>&cos=adauga"><button id="produce-button" class="btn btn-primary w-full bg-color-effect">Adauga in cos</button></a>
                             </div>
                         </div>
                 <?php }
