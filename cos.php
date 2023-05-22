@@ -1,9 +1,9 @@
 <?php require('header.php'); ?>
 
 <?php if ($_SESSION['active']) { ?>
+    <h2>Cosul tau de cumparaturi</h2>
     <div class="wrapper cos">
         <div class="cart-list">
-            <h1>Cosul tau de cumparaturi</h1>
             <?php
                 $produse = 0;
                 if (isset($_COOKIE)) {
@@ -25,7 +25,7 @@
                             <img src="./Images/produse/<?php echo $row['imagine']; ?>" alt="" class="wide-card-img">
                             <div class="wide-card-body">
                                 <div class="wide-card-body-header">
-                                    <h2 class="wide-card-title"><?php echo $row['marca'] . ' ' . $row['model']; ?></h2>
+                                    <h3 class="wide-card-title"><?php echo $row['marca'] . ' ' . $row['model']; ?></h3>
                                     <div class="amount">
                                         <?php if (isset($_COOKIE)) {
                                             if (isset($_COOKIE['cos'])) { ?>
@@ -48,7 +48,7 @@
                 <?php }
             ?>
         </div>
-        <div class="summary">
+        <div class="summary bg-box-dark">
             <?php
                 if (isset($_COOKIE)) {
                     if (isset($_COOKIE['cos'])) {
@@ -63,8 +63,8 @@
                                 while($row = $result->fetch_array()) {
                                     $suma += ($row['pret'] * $arr[$row['id_produs']]);
                                 } ?>
-                                <h1>Valoare cos de cumparaturi</h1>
-                                <h1><?php echo $suma . " Lei"; ?></h1>
+                                <h2>Valoare cos de cumparaturi</h2>
+                                <h2><?php echo $suma . " Lei"; ?></h2>
                                 <a href="detalii_comanda.php"><button class="btn btn-primary">Continua comanda</button></a>
                         <?php }
                         }

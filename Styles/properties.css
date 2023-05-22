@@ -65,3 +65,9 @@
 .font-5 {
     font-size: 5em;
 }
+.m-2 {
+    margin: 1rem;
+}
+.ml-0 {
+    margin-left: 0;
+}

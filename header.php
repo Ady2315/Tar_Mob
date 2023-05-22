@@ -173,7 +173,7 @@
             <ul class="nav-list">
                 <?php if(isset($_SESSION)) {
                     if($_SESSION['active'] == true) { ?>
-                        <li class="nav-list-item dropdown"><a href="cont.php?id=<?php echo $_SESSION['id_user']; ?>" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
+                        <li class="nav-list-item dropdown"><a href="#" class="dropbtn"><i class="bi bi-person color-dark-effect color-hover-dark"><?php echo $_SESSION['nume']; ?></i></a>
                             <div class="dropdown-content">
                                 <a href="cont.php?id=<?php echo $_SESSION['id_user']; ?>">Cont</a>
                                 <a href="logout.php">Delogare</a>

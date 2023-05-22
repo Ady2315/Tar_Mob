@@ -29,7 +29,7 @@
 
                     $_SESSION['active'] = true;
                     $conn->close();
-                    echo "<meta http-equiv=\"refresh\" content=\"1; URL='index.php'\" >";
+                    echo "<meta http-equiv=\"refresh\" content=\"0.1; URL='index.php'\" >";
 
                     exit;
                 }
@@ -53,17 +53,17 @@
         </div>
         <div class="form-row">
             <label for="username">Nume utilizator:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" class="inputs">
             <span class="error"><?php echo $emailErrL; ?></span>
         </div>
         <div class="form-row">
             <label for="parola">Parola:</label>
-            <input type="password" name="parola" id="parola">
+            <input type="password" name="parola" id="parola" class="inputs">
             <span class="error"><?php echo $parolaErrL; ?></span>
         </div>
         <div class="form-row">
             <a href="register.php" class="link-noeffects color-dark-effect">Nu ai cont?</a>
-            <input type="submit" name="submit" value="Conecteaza-te">
+            <button type="submit" name="submit" class="inputs btn btn-success">Conecteaza-te</button>
         </div>
     </form>
 </div>

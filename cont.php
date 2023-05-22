@@ -111,27 +111,27 @@
 
                     <div class="form-row">
                         <label for="nume">Nume:</label>
-                        <input type="text" name="nume" id="nume" value="<?=$row["nume"]?>">
+                        <input type="text" name="nume" id="nume" value="<?=$row["nume"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="username">Nume utilizator:</label>
-                        <input type="text" name="username" id="username" value="<?=$row["nume_utilizator"]?>" >
+                        <input type="text" name="username" id="username" value="<?=$row["nume_utilizator"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="e-mail">Email:</label>
-                        <input type="email" name="e-mail" id="e-mail" value="<?=$row["email"]?>">
+                        <input type="email" name="e-mail" id="e-mail" value="<?=$row["email"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="parola">Parola:</label>
-                        <input type="password" name="parola" id="parola" value="<?=$row["parola"]?>">
+                        <input type="password" name="parola" id="parola" value="<?=$row["parola"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="conf-pass">Confirma parola:</label>
-                        <input type="password" name="conf-pass" id="conf-pass" value="<?=$row["parola"]?>" >
+                        <input type="password" name="conf-pass" id="conf-pass" value="<?=$row["parola"]?>" class="inputs">
                     </div>
 
                     <div class="form-row">
-                    <input type="submit" name="submit" value="Salveaza">
+                    <button type="submit" name="submit" class="inputs btn btn-primary">Salveaza</button>
                     </div>
 
                 </form>

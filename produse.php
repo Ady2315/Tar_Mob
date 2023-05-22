@@ -220,14 +220,5 @@
                 ?>
             </div>
         </section>
-        <nav class="nav justify-center">
-            <ul class="nav-list">
-              <li class="nav-list-item"><a class="color-dark-effect color-hover-dark" href="#"><i class="bi bi-caret-left"></i></a></li>
-              <li class="nav-list-item"><a class="color-dark-effect color-hover-dark" href="#">1</a></li>
-              <li class="nav-list-item"><a class="color-dark-effect color-hover-dark" href="#">2</a></li>
-              <li class="nav-list-item"><a class="color-dark-effect color-hover-dark" href="#">3</a></li>
-              <li class="nav-list-item"><a class="color-dark-effect color-hover-dark" href="#"><i class="bi bi-caret-right"></i></a></li>
-            </ul>
-        </nav>
 
 <?php require('footer.php'); ?>

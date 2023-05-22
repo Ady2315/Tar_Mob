@@ -30,3 +30,16 @@
 .bg-warning:active {
     background-color: #e7174b;
 }
+.btn-success {
+    background-color: #036d2c;
+    color: #EDEDED;
+    transition: 0.3s;
+}
+.btn-success:hover {
+    background-color: #07cf4a;
+    color: #111111;
+}
+.btn-success:active {
+    background-color: #03f723;
+    color: #000000;
+}

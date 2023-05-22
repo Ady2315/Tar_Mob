@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2023 at 06:28 PM
+-- Generation Time: May 22, 2023 at 11:36 AM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
+DROP DATABASE IF EXISTS tar_mob;
+CREATE DATABASE tar_mob;
+USE tar_mob;
 
 DELIMITER $$
 --
@@ -53,13 +56,21 @@ DELIMITER ;
 
 CREATE TABLE `clienti` (
   `id_client` int UNSIGNED NOT NULL,
-  `id_user` int UNSIGNED NOT NULL,
   `nume` varchar(100) NOT NULL,
   `adresa` varchar(200) NOT NULL,
   `localitate` varchar(100) NOT NULL,
   `judet` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `telefon` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `clienti`
+--
+
+INSERT INTO `clienti` (`id_client`, `nume`, `adresa`, `localitate`, `judet`, `telefon`) VALUES
+(18, 'Adi Irimus', 'Str Cucului, nr 34', 'Alba Iulia', 'Alba', '0748645363'),
+(21, 'Andrei Irimus', 'Str. Hini, Nr. 22', 'Cluj Napoca', 'Cluj', '0758647654'),
+(22, 'Andrei Irimus', 'Str. Cailor, Nr 12', 'Sebes', 'Alba', '0758647654');
 
 -- --------------------------------------------------------
 
@@ -73,6 +84,15 @@ CREATE TABLE `comenzi` (
   `data` date NOT NULL,
   `stare` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `comenzi`
+--
+
+INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
+(7, 18, '2023-05-21', 'In tranzit'),
+(10, 21, '2023-05-21', 'In curs de procesare'),
+(11, 21, '2023-05-22', 'In curs de procesare');
 
 -- --------------------------------------------------------
 
@@ -120,21 +140,20 @@ CREATE TABLE `produse` (
 --
 
 INSERT INTO `produse` (`id_produs`, `marca`, `model`, `diagonala`, `rezolutie`, `tip_display`, `os`, `versiune_os`, `procesor`, `nuclee`, `mem_interna`, `mem_ram`, `baterie`, `sloturi_sim`, `stoc`, `pret`, `imagine`) VALUES
-(1, 'SAMSUNG', 'GALAXY A14', 6.4, '2408x1080', 'LCD', 'ANDROID', 13, 'Snapdragon 5356k', 8, 64, 4, 5000, 2, 5, 767.28, 'smta146bk_5__c96135ef.avif'),
+(1, 'SAMSUNG', 'GALAXY A14', 6.4, '2408x1080', 'LCD', 'ANDROID', 13, 'Snapdragon 5356k', 8, 64, 4, 5000, 2, 19, 767.28, 'smta146bk_5__c96135ef.avif'),
 (2, 'APPLE', 'IPHONE 11', 6.1, '1792 x 828', 'LIQUID RETINA HD', 'IOS', 14, 'A13 Bionic chip, Neural Engine Generatia a treia', 16, 64, 4, 3110, 1, 3, 2399, 'iPhone_11_Black_2-up_Vertical_US-EN_SCREEN_b5865797.webp'),
 (3, 'MOTOROLA', 'MOTO G13', 6.53, '1600x720', 'IPS', 'ANDROID', 13, 'MediaTek Helio G85', 8, 128, 4, 5000, 2, 10, 649.9, 'moto_g13_10__7a0accde.avif'),
-(4, 'SAMSUNG', 'GALAXY A04S', 6.5, '720x1600', 'LCD', 'ANDROID', 13, 'Snapdragon 865+', 8, 32, 3, 5000, 2, 99, 599.99, 'telefon-samsung-galaxy-a04s-black-01_fb445fab.jpg'),
-(5, 'APPLE', 'IPHONE 13', 6.1, '2532x1170', 'SUPER RETINA XDR', 'IOS', 13, 'A15 Bionic chip + 16-core Neural Engine', 6, 128, 4, 3240, 1, 99, 3.899, 'Telefon_APPLE_iPhone_13_5G_128GB_PRODUCT_RED_4_.jpg'),
+(5, 'APPLE', 'IPHONE 13', 6.1, '2532x1170', 'SUPER RETINA XDR', 'IOS', 13, 'A15 Bionic chip + 16-core Neural Engine', 6, 128, 4, 3240, 1, 99, 3899, 'Telefon_APPLE_iPhone_13_5G_128GB_PRODUCT_RED_4_.jpg'),
 (6, 'MOTOROLA', 'MOTO E22S', 6.5, '1600x720', 'LCD', 'ANDROID', 12, 'MediaTek Helio G37', 8, 64, 4, 5000, 2, 99, 579.99, '156458-1200-auto.png'),
-(7, 'HUAWEI', 'NOVA 10', 6.67, '2400x1080', 'OLED', 'ANDROID', 12, 'Qualcomm Snapdragon 778G 4G', 8, 128, 8, 4000, 2, 99, 1.799, 'Telefon_HUAWEI_nova_10_128gb_product.png'),
-(8, 'HUAWEI', 'P60 PRO', 6.67, '2700x1220', 'OLED', 'ANDROID', 13.1, 'Snapdragon 8+ Gen 1 4G Mobile Platform', 8, 256, 8, 4815, 2, 99, 5.799, 'telefon_huawei_p60_pro_black_01_51119a78.webp'),
-(9, 'OPPO', 'RENO7 LITE ', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 11, 'Qualcomm Snapdragom 695', 8, 128, 8, 4500, 2, 99, 1.469, 'smtreno7zbk-1_bfaf7f8b.webp'),
-(10, 'OPPO', 'RENO8 T', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 13, 'MediaTek Helio G99', 8, 128, 8, 5000, 2, 99, 1.499, 'smtreno8tbked_ca9fc55d.webp'),
-(11, 'SONY', 'XPERIA 1 IV', 6.5, '3088x1440', 'OLED', 'ANDROID', 12, 'Platforma mobila Snapdragon 8 Gen 1', 8, 256, 12, 5000, 2, 99, 5.499, 'telefon_sony_xperia_1_iv_5g_09_a67535e5.webp'),
-(12, 'SONY', 'XPERIA 5 IV', 6.1, '2500x1080', 'OLED', 'ANDROID', 12, 'Snapdragon 8 Gen 1 Mobile Platform', 8, 128, 8, 5000, 2, 99, 4.499, 'telefon-sony-xperia-5-iv-5g-128gb-8gb-ram-dual-sim-green-1_729b4566.webp'),
-(13, 'XIAOMI', '12X', 6.28, '1080x2400', 'AMOLED DOTDISPLAY', 'ANDROID', 11, 'Snapdragon 870 7nm, Kryo 585 CPU pana la 3.2GHz', 8, 128, 8, 4500, 2, 99, 2.679, 'Telefon_XIAOMI_12X_5G_Blue_2_.webp'),
-(14, 'XIAOMI', '11T', 6.67, '1080x2400', 'AMOLED', 'ANDROID', 13, 'MediaTek Dimensity 1200 6nm', 8, 256, 8, 5000, 2, 99, 1.889, 'Telefon_XIAOMI_Mi_11T_5G_256GB_8GB_RAM_Dual_SIM_Moonlight_White_7_.webp'),
-(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1.499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp'),
+(7, 'HUAWEI', 'NOVA 10', 6.67, '2400x1080', 'OLED', 'ANDROID', 12, 'Qualcomm Snapdragon 778G 4G', 8, 128, 8, 4000, 2, 99, 1799, 'Telefon_HUAWEI_nova_10_128gb_product.png'),
+(8, 'HUAWEI', 'P60 PRO', 6.67, '2700x1220', 'OLED', 'ANDROID', 13.1, 'Snapdragon 8+ Gen 1 4G Mobile Platform', 8, 256, 8, 4815, 2, 99, 5799, 'telefon_huawei_p60_pro_black_01_51119a78.webp'),
+(9, 'OPPO', 'RENO7 LITE ', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 11, 'Qualcomm Snapdragom 695', 8, 128, 8, 4500, 2, 99, 1469, 'smtreno7zbk-1_bfaf7f8b.webp'),
+(10, 'OPPO', 'RENO8 T', 6.43, '2400x1080', 'AMOLED', 'ANDROID', 13, 'MediaTek Helio G99', 8, 128, 8, 5000, 2, 99, 1499, 'smtreno8tbked_ca9fc55d.webp'),
+(11, 'SONY', 'XPERIA 1 IV', 6.5, '3088x1440', 'OLED', 'ANDROID', 12, 'Platforma mobila Snapdragon 8 Gen 1', 8, 256, 12, 5000, 2, 99, 5499, 'telefon_sony_xperia_1_iv_5g_09_a67535e5.webp'),
+(12, 'SONY', 'XPERIA 5 IV', 6.1, '2500x1080', 'OLED', 'ANDROID', 12, 'Snapdragon 8 Gen 1 Mobile Platform', 8, 128, 8, 5000, 2, 99, 4499, 'telefon-sony-xperia-5-iv-5g-128gb-8gb-ram-dual-sim-green-1_729b4566.webp'),
+(13, 'XIAOMI', '12X', 6.28, '1080x2400', 'AMOLED DOTDISPLAY', 'ANDROID', 11, 'Snapdragon 870 7nm, Kryo 585 CPU pana la 3.2GHz', 8, 128, 8, 4500, 2, 99, 2679, 'Telefon_XIAOMI_12X_5G_Blue_2_.webp'),
+(14, 'XIAOMI', '11T', 6.67, '1080x2400', 'AMOLED', 'ANDROID', 13, 'MediaTek Dimensity 1200 6nm', 8, 256, 8, 5000, 2, 99, 1889, 'Telefon_XIAOMI_Mi_11T_5G_256GB_8GB_RAM_Dual_SIM_Moonlight_White_7_.webp'),
+(15, 'HONOR', 'MAGIC 5 LITE', 6.67, '2400x1080', 'AMOLED', 'ANDROID', 12, 'Qualcomm Snapdragon 695', 8, 128, 6, 5100, 2, 0, 1499, 'telefon_honor_magic5_lite_midnight_black_2__399df9d6.webp'),
 (17, 'NOKIA', '1310', 2.1, '300x200', 'LED', 'CEVA', 2, 'Racheta', 1, 0, 0, 1500, 1, 20, 500, 'res_f7eb764947d09b3a9971d9421f2efe27.webp');
 
 --
@@ -178,8 +197,7 @@ INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, 
 -- Indexes for table `clienti`
 --
 ALTER TABLE `clienti`
-  ADD PRIMARY KEY (`id_client`),
-  ADD KEY `fk_id_user` (`id_user`);
+  ADD PRIMARY KEY (`id_client`);
 
 --
 -- Indexes for table `comenzi`
@@ -216,13 +234,13 @@ ALTER TABLE `utilizator`
 -- AUTO_INCREMENT for table `clienti`
 --
 ALTER TABLE `clienti`
-  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `comenzi`
 --
 ALTER TABLE `comenzi`
-  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `facturi`
@@ -245,12 +263,6 @@ ALTER TABLE `utilizator`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `clienti`
---
-ALTER TABLE `clienti`
-  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`id_user`) REFERENCES `utilizator` (`id_utilizator`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comenzi`

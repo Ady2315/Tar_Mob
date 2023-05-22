@@ -2,6 +2,7 @@
 
 <article class="wrapper">
     <header>
+        <h3><a href="edit.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
         <h1>Modificati datele produsului</h1>
     </header>
 
@@ -89,71 +90,71 @@
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>
-                        <input type="text" name="marca" id="marca" value="<?=$row["marca"]?>" >
+                        <input type="text" name="marca" id="marca" value="<?=$row["marca"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="model">Model:</label>
-                        <input type="text" name="model" id="model" value="<?=$row["model"]?>" >
+                        <input type="text" name="model" id="model" value="<?=$row["model"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="diagonala">Diagonala:</label>
-                        <input type="number" name="diagonala" id="diagonala" value="<?=$row["diagonala"]?>" >
+                        <input type="number" name="diagonala" id="diagonala" value="<?=$row["diagonala"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="rezolutie">Rezolutie:</label>
-                        <input type="text" name="rezolutie" id="rezolutie" value="<?=$row["rezolutie"]?>" >
+                        <input type="text" name="rezolutie" id="rezolutie" value="<?=$row["rezolutie"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="tip-display">Tip display:</label>
-                        <input type="text" name="tip-display" id="tip-display" value="<?=$row["tip_display"]?>" >
+                        <input type="text" name="tip-display" id="tip-display" value="<?=$row["tip_display"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="os">Sistem de operare:</label>
-                        <input type="text" name="os" id="os" value="<?=$row["os"]?>" >
+                        <input type="text" name="os" id="os" value="<?=$row["os"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="versiune-os">Versiune:</label>
-                        <input type="number" name="versiune-os" id="versiune-os" value="<?=$row["versiune_os"]?>" >
+                        <input type="number" name="versiune-os" id="versiune-os" value="<?=$row["versiune_os"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="procesor">Procesor:</label>
-                        <input type="text" name="procesor" id="procesor" value="<?=$row["procesor"]?>" >
+                        <input type="text" name="procesor" id="procesor" value="<?=$row["procesor"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="nuclee">Numar nuclee:</label>
-                        <input type="number" name="nuclee" id="nuclee" value="<?=$row["nuclee"]?>" >
+                        <input type="number" name="nuclee" id="nuclee" value="<?=$row["nuclee"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="mem-interna">Memorie interna:</label>
-                        <input type="number" name="mem-interna" id="mem-interna" value="<?=$row["mem_interna"]?>" >
+                        <input type="number" name="mem-interna" id="mem-interna" value="<?=$row["mem_interna"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="mem-ram">Memorie RAM:</label>
-                        <input type="number" name="mem-ram" id="mem-ram" value="<?=$row["mem_ram"]?>" >
+                        <input type="number" name="mem-ram" id="mem-ram" value="<?=$row["mem_ram"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="baterie">Baterie:</label>
-                        <input type="number" name="baterie" id="baterie" value="<?=$row["baterie"]?>" >
+                        <input type="number" name="baterie" id="baterie" value="<?=$row["baterie"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="sloturi-sim">Sloturi SIM:</label>
-                        <input type="number" name="sloturi-sim" id="sloturi-sim" value="<?=$row["sloturi_sim"]?>" >
+                        <input type="number" name="sloturi-sim" id="sloturi-sim" value="<?=$row["sloturi_sim"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="stoc">Stoc:</label>
-                        <input type="number" name="stoc" id="stoc" value="<?=$row["stoc"]?>" >
+                        <input type="number" name="stoc" id="stoc" value="<?=$row["stoc"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="pret">Pret:</label>
-                        <input type="number" name="pret" id="pret" value="<?=$row["pret"]?>" >
+                        <input type="number" name="pret" id="pret" value="<?=$row["pret"]?>" class="inputs">
                     </div>
                     <div class="form-row">
                         <label for="imagine">Imagine:</label>
-                        <input type="file" name="imagine" id="imagine">
+                        <input type="file" name="imagine" id="imagine" class="inputs">
                     </div>
 
                     <div class="form-row">
-                    <input type="submit" name="submit" value="Modifica">
+                    <button type="submit" name="submit" class="btn btn-success inputs w-full">Modifica</button>
                     </div>
 
                 </form>
@@ -163,8 +164,8 @@
             }
             $conn->close();
         } else {
-            echo "<p>Lipsă paramentru (nu știu ce client să modific)</p>";
-            echo "<p>Mergeți înapoi la <a href='clienti.php'>clienti</a> și selectați unul</p>";
+            echo "<p>Lipsă paramentru</p>";
+            echo "<p>Mergeți înapoi la <a href='edit.php'>editare</a></p>";
         }
 
     ?>

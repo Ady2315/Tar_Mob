@@ -2,7 +2,7 @@
 
 <section id="products">
     <h2>Produse</h2>
-    <a href="add-prod.php"><button class="btn btn-primary">Adauga produse</button></a>
+    <a href="add-prod.php"><button class="btn btn-primary m-2 ml-0">Adauga produse</button></a>
     <div id="products-list" class="card-container">
     <?php 
         require('mysql.php'); 
@@ -17,8 +17,10 @@
                     <div class="card-body">
                         <h3 class="card-title"><?php echo $row['marca'] . " " . $row['model']; ?></h3>
                         <p class="card-text card-price"><?php echo $row['pret'] . " Lei"; ?></p>
-                        <a href="modifica.php?id=<?php echo $row['id_produs']; ?>"><button href="index.php" id="produce-button" class="btn btn-primary w-full bg-color-effect">Modifica</button></a>
-                        <a href="sterge.php?id=<?php echo $row['id_produs']; ?>"><button href="index.php" id="produce-button" class="btn btn-primary w-full bg-color-effect">Sterge</button></a>
+                        <div class="op-btns">
+                            <a href="modifica.php?id=<?php echo $row['id_produs']; ?>"><button href="index.php" id="produce-button" class="btn btn-primary w-full bg-color-effect">Modifica</button></a>
+                            <a href="sterge.php?id=<?php echo $row['id_produs']; ?>"><button href="index.php" id="produce-button" class="btn bg-warning w-full">Sterge</button></a>
+                        </div>
                     </div>
                 </div>
         <?php }

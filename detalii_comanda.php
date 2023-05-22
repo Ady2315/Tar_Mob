@@ -2,6 +2,7 @@
 
 <article class="wrapper">
     <header>
+        <h3><a href="cos.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
         <h1>Introduceti datele necesare expedieri</h1>
     </header>
 
@@ -66,26 +67,26 @@
                     <form class="form bg-box-dark" id="comanda" action="" method="POST">
                         <div class="form-row">
                             <label for="nume">Nume:</label>
-                            <input type="text" name="nume" id="nume">
+                            <input type="text" name="nume" id="nume" class="inputs">
                         </div>
                         <div class="form-row">
                             <label for="adresa">Adresa:</label>
-                            <input type="text" name="adresa" id="adresa">
+                            <input type="text" name="adresa" id="adresa" class="inputs">
                         </div>
                         <div class="form-row">
                             <label for="localitate">Localitate:</label>
-                            <input type="text" name="localitate" id="localitate">
+                            <input type="text" name="localitate" id="localitate" class="inputs">
                         </div>
                         <div class="form-row">
                             <label for="judet">Judet:</label>
-                            <input type="text" name="judet" id="judet">
+                            <input type="text" name="judet" id="judet" class="inputs">
                         </div>
                         <div class="form-row">
                             <label for="telefon">Telefon:</label>
-                            <input type="tel" name="telefon" id="telefon">
+                            <input type="tel" name="telefon" id="telefon" class="inputs">
                         </div>
                         <div class="form-row">
-                        <input type="submit" name="submit" value="Confirmati comanda">
+                        <button type="submit" name="submit" class="inputs btn btn-primary w-full">Confirmati comanda</button>
                         </div>
                     </form>
 
