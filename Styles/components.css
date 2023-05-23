@@ -238,11 +238,6 @@ body {
 }
 
 /* Contact form */
-#formular-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
 /* .form-row {
     display: flex;
     flex-direction: row;
@@ -356,13 +351,7 @@ body {
 }
 
 /* General form structure */
-.form-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
+
 .form-textarea {
     display: flex;
     flex-direction: column;
@@ -395,12 +384,7 @@ body {
 }
 
 /* Pagina cos produse */
-.cos {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 2rem;
-}
+
 .cart-list {
     display: flex;
     flex-direction: column;

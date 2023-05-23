@@ -1,8 +1,8 @@
 <?php require('header.php'); ?>
 
-<article class="wrapper">
+<article class="wrapper account-page">
     <header>
-        <h1>Daca doriti sa modificati datele contului, la final apasati pe butonul de salvare</h1>
+        <h1>Daca doriti sa modificati datele contului, la final apasati pe butonul de salvare <span class="error">(Indisponibil)</span></h1>
     </header>
 
 
@@ -107,7 +107,7 @@
                 $result = $conn->query($query);
                 $row = $result->fetch_array();
                 ?>
-                <form class="form bg-box-dark" id="editCont" action="" method="POST">
+                <form class="form-cont bg-box-dark" id="editCont" action="" method="POST">
 
                     <div class="form-row">
                         <label for="nume">Nume:</label>

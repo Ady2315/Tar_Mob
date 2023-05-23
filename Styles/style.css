@@ -40,11 +40,6 @@ body {
     display: none;
     transition: 0.3s;
 }
-#contact {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-}
 .addr-row > * {
     margin: 0;
 }

@@ -69,7 +69,6 @@
                 $amount--;
                 if ($amount <= 0) {
                     unset($arr[$produs]);
-                    var_dump($arr);
                     if (empty($arr)) {
                         setcookie("cos", "", time() - 3600, "/");
                     }

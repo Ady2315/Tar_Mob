@@ -1,6 +1,6 @@
 <?php require('header.php'); ?>
 
-<div id="contact" class="wrapper">
+<div id="contact" class="wrapper contact-wrapper">
     <address class="adresa">
         <h3>Ne puteti gasi:</h3>
         <div class="addr-row">
@@ -29,32 +29,32 @@
         </div>
     </address>
 
-    <form action="" method="POST" id="formular-contact" class="form bg-box-dark">
+    <form action="" method="POST" id="formular-contact" class="form-contact bg-box-dark">
         <div class="form-row">
             <h3>Pentru intrebari sau curiozitati:</h3>
         </div>
         <div class="form-row">
             <label for="nume">Nume:</label>
-            <input type="text" name="nume" id="nume">
+            <input type="text" name="nume" id="nume" class="inputs">
         </div>
         <div class="form-row">
             <label for="e-mail">Email:</label>
-            <input type="email" name="e-mail" id="e-mail">
+            <input type="email" name="e-mail" id="e-mail" class="inputs">
         </div>
         <div class="form-row">
             <label for="telefon">Telefon:</label>
-            <input type="tel" name="telefon" id="telefon">
+            <input type="tel" name="telefon" id="telefon" class="inputs">
         </div>
         <div class="form-row form-textarea">
             <label for="comment">Comentariu:</label>
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <textarea name="comment" id="comment" cols="30" rows="10" class="inputs"></textarea>
         </div>
-        <div class="form-row">
+        <div class="form-row form-checkbox">
             <input type="checkbox" name="condition" id="condition">
             <label for="condition">Acceptati termenii si conditiile</label>
         </div>
         <div class="form-row">
-            <input type="submit" value="Trimite" class="btn btn-primary">
+            <input type="submit" value="Trimite" class="btn btn-primary inputs">
         </div>
     </form>
 </div>

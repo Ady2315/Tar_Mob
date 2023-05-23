@@ -1,6 +1,6 @@
 <?php require('header.php'); ?>
 
-<article class="wrapper">
+<article class="wrapper-comanda">
     <header>
         <h3><a href="cos.php" class="link-noeffects color-dark"><i class="bi bi-arrow-bar-left"></i></a></h3>
         <h1>Introduceti datele necesare expedieri</h1>
@@ -64,7 +64,7 @@
                 } else {
                     //dacă nu s-a efectuat trimiterea, înseamnă că trebuie să afișăm formularul
                     ?>
-                    <form class="form bg-box-dark" id="comanda" action="" method="POST">
+                    <form class="form-comanda bg-box-dark" id="comanda" action="" method="POST">
                         <div class="form-row">
                             <label for="nume">Nume:</label>
                             <input type="text" name="nume" id="nume" class="inputs">
