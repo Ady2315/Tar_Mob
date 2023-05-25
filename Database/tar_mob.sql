@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2023 at 05:37 PM
+-- Generation Time: May 25, 2023 at 12:23 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -20,30 +20,46 @@ SET time_zone = "+00:00";
 --
 -- Database: `tar_mob`
 --
-DROP DATABASE IF EXISTS tar_mob;
-CREATE DATABASE tar_mob;
-USE tar_mob;
 
 DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `inserare_factura` (IN `nr_factura` INT, IN `nr_com` INT, IN `id_prod` INT, IN `cant` INT)   BEGIN
-  DECLARE pret_produs DOUBLE;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_comanda` (`id_c` INT, `d` DATE, `st` VARCHAR(50))   BEGIN
+INSERT INTO comenzi (id_client, data, stare) VALUES (id_c, d, st);
+END$$
 
-  SELECT pret_total_produs(id_prod, cant, pret) INTO pret_produs FROM produse WHERE id_produs = id_prod;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adauga_factura` (IN `nr_fact` INT, IN `nr_com` INT, IN `id_prod` INT, IN `cant` INT)   BEGIN
+    INSERT INTO facturi (nr_fact, nr_comanda, id_produs, cantitate)
+    VALUES (nr_fact, nr_com, id_prod, cant);
+END$$
 
-  INSERT INTO facturi (nr_fact, nr_comanda, id_produs, pret, cantitate) VALUES (nr_factura, nr_com, id_prod, pret_produs, cant);
-
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_comanda` (`id_com` INT, `st` VARCHAR(50))   BEGIN
+UPDATE comenzi
+SET stare = st
+WHERE nr_comanda = id_com;
 END$$
 
 --
 -- Functions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `pret_total_produs` (`id` INT, `cant` INT, `pret_p` DOUBLE) RETURNS DOUBLE DETERMINISTIC BEGIN
-SELECT pret into @pret_p FROM produse WHERE id_produs=id;
-SET @pret_t = (cant * @pret_p) * 1.10;
-RETURN @pret_t;
+CREATE DEFINER=`root`@`localhost` FUNCTION `total_factura` (`factura_nr` INT) RETURNS DECIMAL(10,2) DETERMINISTIC BEGIN
+    DECLARE total DECIMAL(10, 2);
+    
+    SELECT SUM(p.pret * f.cantitate) INTO total
+    FROM facturi f
+    JOIN produse p ON p.id_produs = f.id_produs
+    WHERE f.nr_fact = factura_nr;
+    
+    RETURN total;
+END$$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `val_stoc` () RETURNS DECIMAL(10,2) DETERMINISTIC BEGIN
+DECLARE total DECIMAL(10, 2);
+    
+SELECT SUM(pret * stoc) INTO total FROM produse;
+
+RETURN total;
 END$$
 
 DELIMITER ;
@@ -70,7 +86,8 @@ CREATE TABLE `clienti` (
 INSERT INTO `clienti` (`id_client`, `nume`, `adresa`, `localitate`, `judet`, `telefon`) VALUES
 (18, 'Adi Irimus', 'Str Cucului, nr 34', 'Alba Iulia', 'Alba', '0748645363'),
 (21, 'Andrei Irimus', 'Str. Hini, Nr. 22', 'Cluj Napoca', 'Cluj', '0758647654'),
-(22, 'Andrei Irimus', 'Str. Cailor, Nr 12', 'Sebes', 'Alba', '0758647654');
+(22, 'Andrei Irimus', 'Str. Cailor, Nr 12', 'Sebes', 'Alba', '0758647654'),
+(23, 'Popescu Ion', 'Str. Almas, Nr 12', 'Aiud', 'Alba', '0753864245');
 
 -- --------------------------------------------------------
 
@@ -92,7 +109,40 @@ CREATE TABLE `comenzi` (
 INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
 (7, 18, '2023-05-21', 'In tranzit'),
 (10, 21, '2023-05-21', 'In curs de procesare'),
-(11, 21, '2023-05-22', 'In curs de procesare');
+(11, 21, '2023-05-22', 'In curs de procesare'),
+(13, 22, '2023-04-13', 'Preluat de destinatar'),
+(14, 23, '2023-05-25', 'In curs de procesare');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `detalii_factura`
+-- (See below for the actual view)
+--
+CREATE TABLE `detalii_factura` (
+`Nr factura` int unsigned
+,`Data` date
+,`Nr comanda` int unsigned
+,`Nume client` varchar(100)
+,`Cantitate` decimal(32,0)
+,`Total` decimal(10,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `detalii_produse`
+-- (See below for the actual view)
+--
+CREATE TABLE `detalii_produse` (
+`ID` int unsigned
+,`Marca` varchar(100)
+,`Model` varchar(100)
+,`Sistem de operare` varchar(100)
+,`Cantitate` int
+,`Pret unitar` double
+,`Pret total` double
+);
 
 -- --------------------------------------------------------
 
@@ -105,9 +155,26 @@ CREATE TABLE `facturi` (
   `nr_fact` int UNSIGNED NOT NULL,
   `nr_comanda` int UNSIGNED NOT NULL,
   `id_produs` int UNSIGNED NOT NULL,
-  `pret` double NOT NULL,
   `cantitate` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `facturi`
+--
+
+INSERT INTO `facturi` (`id_fact`, `nr_fact`, `nr_comanda`, `id_produs`, `cantitate`) VALUES
+(14, 1, 11, 9, 2),
+(15, 1, 11, 11, 3),
+(16, 1, 11, 2, 1),
+(17, 2, 10, 3, 3),
+(18, 2, 10, 13, 1),
+(19, 2, 10, 17, 3),
+(20, 3, 7, 17, 10),
+(21, 3, 7, 5, 1),
+(27, 6, 7, 8, 2),
+(29, 28, 14, 5, 2),
+(30, 28, 14, 9, 1),
+(32, 28, 14, 15, 6);
 
 -- --------------------------------------------------------
 
@@ -190,6 +257,24 @@ INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, 
 (10, 'adi_irimus22', 'Adi Irimus', 0x24327924313024326a4668736e4952684c6f3743424e4c5a4b782f676561654156346479306668786b4232697430474b506f35626c4351644c703843, 'adi@irimus.ro'),
 (11, 'radu13', 'Radu', 0x24327924313024466c7351647a4467754f632f52745631325a315456754b4174364f74634f30775969343638636a61316e384c525542496979715753, 'radu13@gmail.com');
 
+-- --------------------------------------------------------
+
+--
+-- Structure for view `detalii_factura`
+--
+DROP TABLE IF EXISTS `detalii_factura`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detalii_factura`  AS SELECT `f`.`nr_fact` AS `Nr factura`, `c`.`data` AS `Data`, `c`.`nr_comanda` AS `Nr comanda`, `cl`.`nume` AS `Nume client`, sum(`f`.`cantitate`) AS `Cantitate`, `total_factura`(`f`.`nr_fact`) AS `Total` FROM (((`facturi` `f` join `comenzi` `c` on((`c`.`nr_comanda` = `f`.`nr_comanda`))) join `clienti` `cl` on((`cl`.`id_client` = `c`.`id_client`))) join `produse` `p` on((`p`.`id_produs` = `f`.`id_produs`))) GROUP BY `f`.`nr_fact`, `c`.`data`, `c`.`nr_comanda`, `cl`.`nume``nume`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `detalii_produse`
+--
+DROP TABLE IF EXISTS `detalii_produse`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detalii_produse`  AS SELECT `p`.`id_produs` AS `ID`, `p`.`marca` AS `Marca`, `p`.`model` AS `Model`, `p`.`os` AS `Sistem de operare`, `p`.`stoc` AS `Cantitate`, `p`.`pret` AS `Pret unitar`, sum((`p`.`pret` * `p`.`stoc`)) AS `Pret total` FROM `produse` AS `p` GROUP BY `p`.`id_produs`, `p`.`marca`, `p`.`model``model`  ;
+
 --
 -- Indexes for dumped tables
 --
@@ -235,19 +320,19 @@ ALTER TABLE `utilizator`
 -- AUTO_INCREMENT for table `clienti`
 --
 ALTER TABLE `clienti`
-  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `comenzi`
 --
 ALTER TABLE `comenzi`
-  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `facturi`
 --
 ALTER TABLE `facturi`
-  MODIFY `id_fact` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_fact` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `produse`
@@ -275,7 +360,7 @@ ALTER TABLE `comenzi`
 -- Constraints for table `facturi`
 --
 ALTER TABLE `facturi`
-  ADD CONSTRAINT `fk_id_produs` FOREIGN KEY (`id_produs`) REFERENCES `produse` (`id_produs`),
+  ADD CONSTRAINT `fk_id_produs` FOREIGN KEY (`id_produs`) REFERENCES `produse` (`id_produs`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_nr_comanda` FOREIGN KEY (`nr_comanda`) REFERENCES `comenzi` (`nr_comanda`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
