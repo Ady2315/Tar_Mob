@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 12:23 PM
+-- Generation Time: May 25, 2023 at 04:04 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -67,6 +67,19 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `afisare_clienti`
+-- (See below for the actual view)
+--
+CREATE TABLE `afisare_clienti` (
+`Nume` varchar(100)
+,`Localitate` varchar(100)
+,`Judet` varchar(50)
+,`Adresa` varchar(200)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `clienti`
 --
 
@@ -112,6 +125,19 @@ INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
 (11, 21, '2023-05-22', 'In curs de procesare'),
 (13, 22, '2023-04-13', 'Preluat de destinatar'),
 (14, 23, '2023-05-25', 'In curs de procesare');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `comenzi_recente`
+-- (See below for the actual view)
+--
+CREATE TABLE `comenzi_recente` (
+`Nr comanda` int unsigned
+,`Data` date
+,`Nume client` varchar(100)
+,`Stare` varchar(50)
+);
 
 -- --------------------------------------------------------
 
@@ -260,6 +286,38 @@ INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, 
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `vanzari_produse`
+-- (See below for the actual view)
+--
+CREATE TABLE `vanzari_produse` (
+`ID` int unsigned
+,`Marca` varchar(100)
+,`Model` varchar(100)
+,`Cantitate vanduta` decimal(32,0)
+,`Venit produs` double
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `afisare_clienti`
+--
+DROP TABLE IF EXISTS `afisare_clienti`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `afisare_clienti`  AS SELECT `c`.`nume` AS `Nume`, `c`.`localitate` AS `Localitate`, `c`.`judet` AS `Judet`, `c`.`adresa` AS `Adresa` FROM `clienti` AS `c` ORDER BY `c`.`nume` ASC, `c`.`localitate` ASC  ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `comenzi_recente`
+--
+DROP TABLE IF EXISTS `comenzi_recente`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `comenzi_recente`  AS SELECT `c`.`nr_comanda` AS `Nr comanda`, `c`.`data` AS `Data`, `cl`.`nume` AS `Nume client`, `c`.`stare` AS `Stare` FROM (`comenzi` `c` join `clienti` `cl` on((`c`.`id_client` = `cl`.`id_client`))) WHERE (`c`.`data` >= (curdate() - interval 1 month))  ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `detalii_factura`
 --
 DROP TABLE IF EXISTS `detalii_factura`;
@@ -274,6 +332,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `detalii_produse`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detalii_produse`  AS SELECT `p`.`id_produs` AS `ID`, `p`.`marca` AS `Marca`, `p`.`model` AS `Model`, `p`.`os` AS `Sistem de operare`, `p`.`stoc` AS `Cantitate`, `p`.`pret` AS `Pret unitar`, sum((`p`.`pret` * `p`.`stoc`)) AS `Pret total` FROM `produse` AS `p` GROUP BY `p`.`id_produs`, `p`.`marca`, `p`.`model``model`  ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vanzari_produse`
+--
+DROP TABLE IF EXISTS `vanzari_produse`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vanzari_produse`  AS SELECT `f`.`id_produs` AS `ID`, `p`.`marca` AS `Marca`, `p`.`model` AS `Model`, sum(`f`.`cantitate`) AS `Cantitate vanduta`, sum((`p`.`pret` * `f`.`cantitate`)) AS `Venit produs` FROM (`facturi` `f` join `produse` `p` on((`p`.`id_produs` = `f`.`id_produs`))) GROUP BY `f`.`id_produs`, `p`.`marca`, `p`.`model` ORDER BY sum((`p`.`pret` * `f`.`cantitate`)) AS `DESCdesc` ASC  ;
 
 --
 -- Indexes for dumped tables
