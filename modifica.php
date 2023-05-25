@@ -86,7 +86,7 @@
                 $row = $result->fetch_array();
 
                 ?>
-                <form class="form bg-box-dark" id="editProdus" action="" method="POST">
+                <form class="form-mod bg-box-dark" id="editProdus" action="" method="POST">
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>

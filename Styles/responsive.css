@@ -218,6 +218,22 @@
     .wrapper-comanda > header > h1 {
         font-size: 1em;
     }
+    /* Admin: Adaugare produse */
+    .form-add-prod {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-radius: 2em;
+    }
+    /* Admin: Modificare produse */
+    .form-mod {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-radius: 2em;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

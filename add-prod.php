@@ -61,7 +61,7 @@
 
 
                 ?>
-                <form class="form bg-box-dark" id="editProdus" action="" method="POST" enctype="multipart/form-data">
+                <form class="form-add-prod bg-box-dark" id="editProdus" action="" method="POST" enctype="multipart/form-data">
 
                     <div class="form-row">
                         <label for="marca">Marca:</label>
