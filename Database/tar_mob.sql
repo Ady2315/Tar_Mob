@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 04:04 PM
+-- Generation Time: May 26, 2023 at 01:14 PM
 -- Server version: 8.0.33
 -- PHP Version: 8.2.0
 
@@ -71,10 +71,10 @@ DELIMITER ;
 -- (See below for the actual view)
 --
 CREATE TABLE `afisare_clienti` (
-`Nume` varchar(100)
-,`Localitate` varchar(100)
+`Adresa` varchar(200)
 ,`Judet` varchar(50)
-,`Adresa` varchar(200)
+,`Localitate` varchar(100)
+,`Nume` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -100,7 +100,8 @@ INSERT INTO `clienti` (`id_client`, `nume`, `adresa`, `localitate`, `judet`, `te
 (18, 'Adi Irimus', 'Str Cucului, nr 34', 'Alba Iulia', 'Alba', '0748645363'),
 (21, 'Andrei Irimus', 'Str. Hini, Nr. 22', 'Cluj Napoca', 'Cluj', '0758647654'),
 (22, 'Andrei Irimus', 'Str. Cailor, Nr 12', 'Sebes', 'Alba', '0758647654'),
-(23, 'Popescu Ion', 'Str. Almas, Nr 12', 'Aiud', 'Alba', '0753864245');
+(23, 'Popescu Ion', 'Str. Almas, Nr 12', 'Aiud', 'Alba', '0753864245'),
+(24, 'Radu', 'Str. Veche, Nr 15', 'Lancram', 'Alba', '0746835648');
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,8 @@ INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
 (10, 21, '2023-05-21', 'In curs de procesare'),
 (11, 21, '2023-05-22', 'In curs de procesare'),
 (13, 22, '2023-04-13', 'Preluat de destinatar'),
-(14, 23, '2023-05-25', 'In curs de procesare');
+(14, 23, '2023-05-25', 'In curs de procesare'),
+(15, 24, '2023-05-26', 'Spre destinatie');
 
 -- --------------------------------------------------------
 
@@ -133,8 +135,8 @@ INSERT INTO `comenzi` (`nr_comanda`, `id_client`, `data`, `stare`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `comenzi_recente` (
-`Nr comanda` int unsigned
-,`Data` date
+`Data` date
+,`Nr comanda` int unsigned
 ,`Nume client` varchar(100)
 ,`Stare` varchar(50)
 );
@@ -146,11 +148,11 @@ CREATE TABLE `comenzi_recente` (
 -- (See below for the actual view)
 --
 CREATE TABLE `detalii_factura` (
-`Nr factura` int unsigned
+`Cantitate` decimal(32,0)
 ,`Data` date
 ,`Nr comanda` int unsigned
+,`Nr factura` int unsigned
 ,`Nume client` varchar(100)
-,`Cantitate` decimal(32,0)
 ,`Total` decimal(10,2)
 );
 
@@ -161,13 +163,13 @@ CREATE TABLE `detalii_factura` (
 -- (See below for the actual view)
 --
 CREATE TABLE `detalii_produse` (
-`ID` int unsigned
+`Cantitate` int
+,`ID` int unsigned
 ,`Marca` varchar(100)
 ,`Model` varchar(100)
-,`Sistem de operare` varchar(100)
-,`Cantitate` int
-,`Pret unitar` double
 ,`Pret total` double
+,`Pret unitar` double
+,`Sistem de operare` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -290,10 +292,10 @@ INSERT INTO `utilizator` (`id_utilizator`, `nume_utilizator`, `nume`, `parola`, 
 -- (See below for the actual view)
 --
 CREATE TABLE `vanzari_produse` (
-`ID` int unsigned
+`Cantitate vanduta` decimal(32,0)
+,`ID` int unsigned
 ,`Marca` varchar(100)
 ,`Model` varchar(100)
-,`Cantitate vanduta` decimal(32,0)
 ,`Venit produs` double
 );
 
@@ -387,13 +389,13 @@ ALTER TABLE `utilizator`
 -- AUTO_INCREMENT for table `clienti`
 --
 ALTER TABLE `clienti`
-  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_client` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `comenzi`
 --
 ALTER TABLE `comenzi`
-  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `nr_comanda` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `facturi`
