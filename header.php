@@ -40,7 +40,7 @@
                 $data = "$id=>1";
                 setcookie("cos", $data, time() + (86400 * 30), "/");
             }
-            header("refresh: 0.1; url = produse.php");
+            header("refresh: 0.1; url = " . $_SERVER['PHP_SELF']);
             // header("refresh: 1; url = produse.php");
         }
         if ($cos == "sterge") {

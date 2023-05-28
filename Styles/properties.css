@@ -18,6 +18,9 @@
 .border-bot {
     border-bottom: 2px solid #444444;
 }
+.bround-bot {
+    border-radius: 0 0 2rem 2rem;
+}
 .w-full {
     width: 100%;
 }

@@ -4,6 +4,9 @@
 .bg-box-dark {
     background-color: #444444;
 }
+.bg-grid-dark {
+    background-color: #313131;
+}
 .color-dark, .color-dark-effect {
     color: #EDEDED;
     text-decoration: none;
@@ -42,4 +45,7 @@
 .btn-success:active {
     background-color: #03f723;
     color: #000000;
+}
+.shadow100-x {
+    box-shadow: 10px 0 #313131, -10px 0 #313131;
 }

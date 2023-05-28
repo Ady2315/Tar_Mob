@@ -234,6 +234,72 @@
         gap: 1rem;
         border-radius: 2em;
     }
+    /* Pagina produs */
+    .big-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+        padding-bottom: 0;
+        row-gap: 20px;
+    }
+    .big-card-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .bi-caret-left-fill {
+        font-size: 1.5em;
+    }
+    .big-card-img {
+        height: auto;
+        border-radius: 2rem;
+        border: 3px solid #171717;
+    }
+    .big-card-title {
+        font-size: 1em;
+        margin: 0;
+        text-align: end;
+    }
+    .big-card-body {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 1rem;
+        border-bottom: 2px solid #313131;
+        padding-bottom: 20px;
+    }
+    .big-card-body h1 {
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .big-card-body a button {
+        font-size: 1em;
+    }
+    .specs {
+        display: flex;
+        flex-direction: column;
+        /* row-gap: 2rem; */
+    }
+    .spec {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .spec p {
+        word-wrap: break-word;
+        text-align: end;
+    }
+    .spec:last-child {
+        border-bottom-left-radius: 2em;
+        border-bottom-right-radius: 2em;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -260,6 +326,30 @@
     /* Pagina detalii comanda */
     .wrapper-comanda > header > h1 {
         font-size: 1.3em;
+    }
+    /* Pagina produs */
+    .big-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .big-card-img {
+        width: 80%;
+
+    }
+    .big-card-header, .specs {
+        grid-column: 1 / 3;
+    }
+    .big-card-body {
+        border: none;
+        padding: 0;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .big-card-body h1 {
+        font-size: 2em;
+    }
+    .big-card-title {
+        font-size: 1.5em;
     }
 }
 
@@ -300,6 +390,21 @@
     }
     .form-comanda {
         width: fit-content;
+    }
+    /* Pagina produs */
+    .big-card {
+        gap: 30px;
+    }
+    .big-card-img {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        width: 100%;
+    }
+    .specs {
+        grid-column: 2 / 3;
+    }
+    .spec:last-child {
+        border-bottom-left-radius: 0;
     }
 } 
 
@@ -399,6 +504,16 @@
     .amount > span, .wide-card-price {
         font-size: 1.5em;
     }
+    /* Pagina produs */
+    .big-card {
+        padding: 2rem;
+    }
+    .shadow100-x {
+        box-shadow: 32px 0 #313131, -10px 0 #313131;
+    }
+    .spec:last-child {
+        border-radius: 0;
+    }
 }
 @media only screen and (min-width: 1200px) {
     /* Navbar */
@@ -475,5 +590,33 @@
     }
     .amount > span, .wide-card-price {
         font-size: 2em;
+    }
+    /* Pagina produs */
+    .big-card {
+        padding: 3rem;
+    }
+    .big-card-img {
+        width: 80%;
+    }
+    .spec > h4 {
+        font-size: 1.25em;
+    }
+    .spec > p {
+        font-size: 1.1em;
+    }
+    .shadow100-x {
+        box-shadow: 48px 0 #313131, -10px 0 #313131;
+    }
+    .big-card-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .big-card-body a button {
+        width: 100%;
+    }
+    .big-card-body > a {
+        width: fit-content;
     }
 }
