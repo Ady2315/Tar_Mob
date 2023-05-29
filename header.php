@@ -85,6 +85,13 @@
         }
         header("refresh: 0.1; url = cos.php");
     }
+    if(isset($_GET['cos'])) {
+        $cos = $_GET['cos'];
+        if ($cos == "golire" && isset($_COOKIE) && isset($_COOKIE['cos'])) {
+            setcookie("cos", "", time() - 3600, "/");
+            header("refresh: 0.1; url = index.php");
+        }
+    }
 
     function exportCookieCart() {
         $data = explode('=>', $_COOKIE['cos']);
@@ -135,8 +142,7 @@
                     <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
                         <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
-                    <?php if ($_SESSION['active']) { ?>
-                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
+                    <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
                             <i class="bi bi-cart"></i></a>
                             <span class="error">
                                 <?php
@@ -158,7 +164,6 @@
                                 ?>
                             </span>
                         </li>
-                    <?php } ?>
                 </ul>
             </nav>
             <nav id="mobile">
@@ -170,8 +175,7 @@
                     <?php if($_SESSION['active'] == true && $_SESSION['nume'] == "Admin") { ?>
                         <li class="nav-list-item"><a href="edit.php" class="color-dark-effect color-hover-dark">Modificare</a></li>
                     <?php } ?>
-                    <?php if ($_SESSION['active']) { ?>
-                        <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
+                    <li class="nav-list-item"><a href="cos.php" class="color-dark-effect color-hover-dark">
                             <i class="bi bi-cart"></i></a>
                             <span class="error">
                                 <?php
@@ -193,7 +197,6 @@
                                 ?>
                             </span>
                         </li>
-                    <?php } ?>
                 </ul>
             </nav>
             <ul class="nav-list">

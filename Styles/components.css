@@ -285,9 +285,6 @@ body {
 }
 
 /* Login and Register form */
-.login, .register {
-    background-color: #444444;
-}
 .op-container {
     display: flex;
     justify-content: center;

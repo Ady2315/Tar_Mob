@@ -1,6 +1,5 @@
 <?php require('header.php'); ?>
 
-<?php if ($_SESSION['active']) { ?>
     <h2>Cosul tau de cumparaturi</h2>
     <div class="wrapper cos">
         <div class="cart-list">
@@ -73,7 +72,5 @@
                 }
             ?>
     </div>
-<?php } 
-    else echo "<meta http-equiv=\"refresh\" content=\"0; URL='index.php'\" >"; ?>
 
 <?php require('footer.php'); ?>

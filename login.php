@@ -46,22 +46,22 @@
 ?>
 
 <div class="op-container login-container">
-    <form action="" method="POST" class="login form bg-box-dark">
-        <div class="form-row">
+    <form action="" method="POST" class="login-form  bg-box-dark">
+        <div class="lr-header">
             <a href="index.php" class="link-noeffects color-dark-effect"><i class="bi bi-arrow-bar-left"></i></a>
             <h3>Conecteaza-te</h3>
         </div>
-        <div class="form-row">
+        <div class="lr-row space-between">
             <label for="username">Nume utilizator:</label>
             <input type="text" name="username" id="username" class="inputs">
             <span class="error"><?php echo $emailErrL; ?></span>
         </div>
-        <div class="form-row">
+        <div class="lr-row">
             <label for="parola">Parola:</label>
             <input type="password" name="parola" id="parola" class="inputs">
             <span class="error"><?php echo $parolaErrL; ?></span>
         </div>
-        <div class="form-row">
+        <div class="lr-footer">
             <a href="register.php" class="link-noeffects color-dark-effect">Nu ai cont?</a>
             <button type="submit" name="submit" class="inputs btn btn-success">Conecteaza-te</button>
         </div>
