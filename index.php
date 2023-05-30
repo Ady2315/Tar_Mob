@@ -7,7 +7,7 @@
         <div id="products-list" class="home-card-container">
             <?php
                 require('mysql.php'); 
-                $query = "SELECT * FROM (SELECT * FROM produse ORDER BY id_produs DESC LIMIT 5) Var1 ORDER BY id_produs ASC;";
+                $query = "SELECT * FROM (SELECT * FROM produse ORDER BY id_produs DESC LIMIT 5) Var1 ORDER BY id_produs DESC;";
                 $result = $conn->query($query);
                 $cale = "./Images/produse/";
 
@@ -18,7 +18,11 @@
                             <div class="card-body">
                                 <a href="produs.php?id=<?php echo $row['id_produs']; ?>" class="link-noeffects color-dark color-dark-effect"><h3 class="card-title"><?php echo $row['marca'] . " " . $row['model']; ?></h3></a>
                                 <p class="card-text card-price"><?php echo $row['pret'] . " Lei"; ?></p>
-                                <a href="index.php?id_produs=<?php echo $row['id_produs']; ?>&cos=adauga"><button id="produce-button" class="btn btn-primary w-full bg-color-effect">Adauga in cos</button></a>
+                                <?php if($row['stoc'] > 0) { ?>
+                                    <a href="index.php?id_produs=<?php echo $row['id_produs']; ?>&cos=adauga"><button id="produce-button" class="btn btn-primary w-full bg-color-effect">Adauga in cos</button></a>
+                                <?php } else { ?>
+                                    <button id="produce-button" class="btn btn-disabled w-full">Stoc epuizat</button>
+                                <?php } ?>
                             </div>
                         </div>
                 <?php }
