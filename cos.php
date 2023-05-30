@@ -34,7 +34,7 @@
                                         <?php    }
                                         } ?>
                                     </div>
-                                    <a href="cos.php?id_produs=<?php echo $row['id_produs']; ?>&cos=sterge"><button id="produce-button" class="btn btn-primary w-half bg-color-effect bg-warning">Sterge</button></a>
+                                    <a href="cos.php?id_produs=<?php echo $row['id_produs']; ?>&cos=sterge"><button id="produce-button" class="btn btn-primary w-full bg-color-effect bg-warning">Sterge</button></a>
                                 </div>
                             </div>
                             <h1 class="wide-card-price"><?php echo $row['pret'] . " lei"; ?></h1>
