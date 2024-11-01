@@ -1,23 +1,19 @@
-# Magazin online (TarMob)
+# Online store (TarMob)
 
-Proiectul constă într-un website care permite utilizatorului să achiziționeze telefoane din
-diferite categorii, operațiuni care vor fi salvate în baza de date MySQL.
+The project consists of a website that allows the user to purchase phones from different categories, operations that will be saved in the MySQL database.
 
-## Tehnologii
+## Technologies
 
  - HTML, CSS
  - JavaScript
  - PHP
  - MySQL
    
-## Functionalitati
+## Functionalities
 
-- vizualizarea produselor în pagină și filtrarea acestora, cât și afișarea individuală a
-fiecărui produs cu specificațiile acestuia
-- operațiuni de logare și înregistrare utilizator
-- opțiuni de adăugare, modificare și stergere produse, doar pentru un utilizator admin
-- coș de cumpărături de salvare a produselor dorite prin Cookie-uri și specificarea
-cantităților per produs
-- operațiune de finalizare a comenzii din coșul de cumpărături și înregistrarea acesteia
-în baza de date, restricționare la finalizarea comenzii dacă utilizatorul nu este logat
-- responsive și pentru mobile
+- viewing the products on the page and filtering them, as well as the individual display of each product with its specifications
+- user login and registration operations
+- options to add, modify and delete products, only for an admin user
+- shopping cart saving the desired products through Cookies and the specification quantities per product
+- checkout operation from the shopping cart and its registration in the database, restriction on checkout if the user is not logged in
+- responsive and for mobile
